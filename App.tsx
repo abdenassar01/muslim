@@ -13,7 +13,7 @@ export default function App() {
    <NavigationContainer>
     <QueryClientProvider client={ client }>
       <Stack.Navigator>
-        <Stack.Screen name='Home' component={ Home } />
+        <Stack.Screen name='Muslim' component={ Home } />
         <Stack.Screen name='Surah' component={ Surah } />
       </Stack.Navigator>
     </QueryClientProvider>

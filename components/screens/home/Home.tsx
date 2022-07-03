@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import instance from '../../../axios/axios';
 import requests from '../../../axios/requests';
@@ -6,7 +6,7 @@ import { useQuery } from 'react-query';
 import React from 'react'
  
 
-const Home = () => {
+const Home = ({ navigation }) => {
 
 const { data } = useQuery("getAllSurah", async () => {
   const response = await instance.get(requests.all);
@@ -34,12 +34,12 @@ const list: Surah[] = data?.map((surah: El) => ({
 
 const renderItem = ({ item }) => {
   return (
-    <TouchableHighlight
+    <TouchableOpacity
       style={ styles.button }
-      // onPress={onPress}
+      onPress={ () => navigation.navigate('Surah', { id: item.id }) }
     >
       <Text style={ styles.text }>{item.title}</Text>
-    </TouchableHighlight>
+    </TouchableOpacity>
   )
 }
 
@@ -56,17 +56,17 @@ const renderItem = ({ item }) => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-    },
-    button: {
-      padding: 10,
-      fontSize: 20,
-    },
-    text: {
-      textAlign: 'center'
-    }
-  });
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  button: {
+    padding: 10,
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 20
+  }
+});
 
 export default Home
