@@ -4,11 +4,12 @@ import instance from '../../../axios/axios';
 import requests from '../../../axios/requests';
 import { useQuery } from 'react-query';
 import React from 'react'
+import Loading from '../../loading/Loading';
  
 
 const Home = ({ navigation }) => {
 
-const { data } = useQuery("getAllSurah", async () => {
+const { data, isLoading, error } = useQuery("getAllSurah", async () => {
   const response = await instance.get(requests.all);
   return response?.data.data
 })
@@ -43,6 +44,12 @@ const renderItem = ({ item }) => {
   )
 }
 
+  if (isLoading) return ( 
+   <Loading size={ 50 } /> 
+  )
+
+  if (error) return <Text>Error has accured</Text>
+ 
   return (
     <View style={styles.container}>
         <FlatList
