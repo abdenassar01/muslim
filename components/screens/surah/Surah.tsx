@@ -2,21 +2,20 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { useQuery } from 'react-query';
 import React from 'react';
 import instance from '../../../axios/axios';
+import Loading from '../../loading/Loading';
 
 const Surah = ({ route, navigation }: any) => {
 
   const { id } = route.params;
 
-  const { data } = useQuery("surahDetails", async () => {
+  const { data, isFetching, error } = useQuery("surahDetails", async () => {
     const response = await instance.get(`/surah/${id}`);
     return response?.data.data
   })
 
   navigation.setOptions({ title: data?.name })
 
-
-
-  type Sora = {
+  type Ayah = {
     number: number,
     text: string,
     numberInSurah: number,
@@ -27,16 +26,19 @@ const Surah = ({ route, navigation }: any) => {
     hizbQuarter: number,
     sajda: boolean
   }
+
+  if (isFetching) return <Loading size={70} />
+  
   return (
     <View style={ styles.container }>
       <ScrollView style={ styles.surah }>
         {
-          data?.ayahs.map((item:Sora) => (
+          data?.ayahs.map((item:Ayah) => (
             <View key={item.number}>
               <Text  
                 style={ styles.text } 
               >
-                {item.text}
+                { item.text }
               </Text>  
               <Text style={ styles.ayah } >&nbsp;{ item.numberInSurah }&nbsp;</Text>
             </View> 
@@ -54,7 +56,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   surah: {
-    backgroundColor: '#004d49',
+    backgroundColor: '#0276ff',
     width: '100%',
     borderRadius: 5,
     alignContent: 'center',
@@ -65,17 +67,18 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
     color: '#ffffff',
-    paddingVertical: 20,
+    paddingVertical: 5,
     paddingHorizontal: 10
   },
   ayah: {
-    backgroundColor: '#5b50f7',
+    backgroundColor: '#fff',
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#070606',
     borderRadius: 50,
     padding: 5,
     textAlign: 'center',
-    marginHorizontal: 150
+    marginHorizontal: 130,
+    marginVertical: 10
   }
 });
 

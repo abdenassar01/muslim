@@ -1,16 +1,15 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import instance from '../../../axios/axios';
-import requests from '../../../axios/requests';
 import { useQuery } from 'react-query';
-import React from 'react'
+import React from 'react';
 import Loading from '../../loading/Loading';
  
 
 const Home = ({ navigation }) => {
 
-const { data, isLoading, error } = useQuery("getAllSurah", async () => {
-  const response = await instance.get(requests.all);
+const { data, isFetching, error } = useQuery("getAllSurah", async () => {
+  const response = await instance.get('/surah');
   return response?.data.data
 })
 
@@ -33,6 +32,7 @@ const list: Surah[] = data?.map((surah: El) => ({
   title: surah.name
 }))
 
+
 const renderItem = ({ item }) => {
   return (
     <TouchableOpacity
@@ -44,7 +44,7 @@ const renderItem = ({ item }) => {
   )
 }
 
-  if (isLoading) return ( 
+  if (isFetching) return ( 
    <Loading size={ 50 } /> 
   )
 

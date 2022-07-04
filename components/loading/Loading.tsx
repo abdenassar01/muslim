@@ -1,5 +1,5 @@
-import { View, Text } from 'react-native'
-import ClipLoader from "react-spinners/ClipLoader";
+import { View, Text, StyleSheet } from 'react-native'
+import { Circle } from 'react-native-animated-spinkit';
 
 type Props = {
     size: number
@@ -7,10 +7,21 @@ type Props = {
 
 const Loading = ({ size }: Props) => {
   return (
-    <View>
-        <ClipLoader color='#5b50f7' size={ size } />
+    <View style={ styles.loader }>
+        <Circle color='#0276ff' size={ size } />
+        <Text>Please Wait. We are getting it ready for you</Text>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  loader: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    padding: 8,
+  }
+})
 
 export default Loading
