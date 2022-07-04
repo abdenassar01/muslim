@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: "http://api.alquran.cloud/v1"
+    baseURL: "https://api.alquran.cloud/v1"
 });
 
 export default instance

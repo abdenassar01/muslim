@@ -24,7 +24,9 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "versionCode": 1,
+      "package": "com.muslim"
     },
     "web": {
       "favicon": "./assets/icon.png"

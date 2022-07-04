@@ -29,7 +29,8 @@ type Surah = {
 
 const list: Surah[] = data?.map((surah: El) => ({
   id: surah.number,
-  title: surah.name
+  title: surah.name,
+  englishTitle: surah.englishName
 }))
 
 
@@ -38,8 +39,11 @@ const renderItem = ({ item }) => {
     <TouchableOpacity
       style={ styles.button }
       onPress={ () => navigation.navigate('Surah', { id: item.id }) }
-    >
+    > 
+    <View style={styles.titleView}>
+      <Text style={ styles.text }>{item.englishTitle}</Text>
       <Text style={ styles.text }>{item.title}</Text>
+    </View>
     </TouchableOpacity>
   )
 }
@@ -72,7 +76,17 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    fontSize: 20
+    fontSize: 20,
+    color: '#f1faf9'
+  },
+  titleView: {
+    flex: 1,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    marginHorizontal: 2,
+    padding: 5,
+    backgroundColor: '#0276ff',
+    borderRadius: 5
   }
 });
 

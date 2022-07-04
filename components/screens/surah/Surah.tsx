@@ -13,7 +13,7 @@ const Surah = ({ route, navigation }: any) => {
     return response?.data.data
   })
 
-  navigation.setOptions({ title: data?.name })
+  navigation.setOptions({ title: data?.name ? data.name : "loading..." })
 
   type Ayah = {
     number: number,
@@ -28,23 +28,27 @@ const Surah = ({ route, navigation }: any) => {
   }
 
   if (isFetching) return <Loading size={70} />
-  
+  if (error) return <Text>an error accured check your network status</Text>
+
   return (
     <View style={ styles.container }>
       <ScrollView style={ styles.surah }>
         {
           data?.ayahs.map((item:Ayah) => (
-            <View key={item.number}>
-              <Text  
-                style={ styles.text } 
-              >
+            <View key={item.number} >
+              <Text style={ styles.text } >
                 { item.text }
               </Text>  
-              <Text style={ styles.ayah } >&nbsp;{ item.numberInSurah }&nbsp;</Text>
+              <Text style={ styles.ayah } >&nbsp;{ item.numberInSurah }&nbsp; { item.sajda && '🕌' }</Text>
             </View> 
           ))
         }
       </ScrollView> 
+      <View style={styles.bottomBar}>
+        <Text style={styles.text}> { data?.englishName } </Text>
+        <Text style={styles.text}> { data?.numberOfAyahs } </Text>
+        <Text style={styles.text}> { data?.name } </Text>
+      </View>
     </View>
   )
 }
@@ -52,12 +56,13 @@ const Surah = ({ route, navigation }: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
+    padding: 10,
     backgroundColor: '#fff',
   },
   surah: {
     backgroundColor: '#0276ff',
     width: '100%',
+    height: '85%',
     borderRadius: 5,
     alignContent: 'center',
     paddingBottom: 50,
@@ -67,7 +72,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
     color: '#ffffff',
-    paddingVertical: 5,
+    paddingVertical: 2,
     paddingHorizontal: 10
   },
   ayah: {
@@ -75,10 +80,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#070606',
     borderRadius: 50,
-    padding: 5,
+    padding: 2,
     textAlign: 'center',
     marginHorizontal: 130,
-    marginVertical: 10
+    marginVertical: 5
+  },
+  bottomBar: {
+    flex: 1,
+    justifyContent: 'space-around',
+    backgroundColor: '#0276ff',
+    flexDirection: 'row',
+    padding: 5,
+    marginTop: 10,
+    borderRadius: 5,
   }
 });
 

@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native'
-import { Circle } from 'react-native-animated-spinkit';
+import { Bounce } from 'react-native-animated-spinkit';
 
 type Props = {
     size: number
@@ -8,7 +8,7 @@ type Props = {
 const Loading = ({ size }: Props) => {
   return (
     <View style={ styles.loader }>
-        <Circle color='#0276ff' size={ size } />
+        <Bounce color='#0276ff' size={ size } />
         <Text>Please Wait. We are getting it ready for you</Text>
     </View>
   )
