@@ -35,13 +35,15 @@ type El = {
 type Surah = {
   id: number,
   title: string,
-  englishTitle: string
+  englishTitle: string,
+  index: number,
 }
 
 const list: Surah[] = data?.map((surah: El) => ({
   id: Number(surah.index),
   title: surah.titleAr,
-  englishTitle: surah.title
+  englishTitle: surah.title,
+  index: Number(surah.index)
 }))
 
 
@@ -49,7 +51,7 @@ const renderItem = ({ item }: any) => {
   return (
     <TouchableOpacity
       style={ styles.button }
-      onPress={ () => navigation.navigate('Surah', { id: item.id }) }
+      onPress={ () => navigation.navigate('Surah', { index: item.index, nameAr: item.title }) }
     > 
     <View style={styles.titleView}>
       <Text style={ styles.text }>{item.englishTitle}</Text>

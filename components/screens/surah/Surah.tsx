@@ -1,19 +1,22 @@
+import axios from 'axios';
+import { useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { useQuery } from 'react-query';
-import React from 'react';
-import instance from '../../../axios/axios';
+
 import Loading from '../../loading/Loading';
 
 const Surah = ({ route, navigation }: any) => {
 
-  const { id } = route.params;
+  const { index, nameAr } = route.params;
 
   const { data, isFetching, error } = useQuery("surahDetails", async () => {
-    const response = await instance.get(`/surah/${id}`);
-    return response?.data.data
+    const response = await axios.get(`https://raw.githubusercontent.com/semarketir/quranjson/master/source/surah/surah_${ index }.json`);
+    return response?.data
   })
 
-  navigation.setOptions({ title: isFetching ? "loading..." : data?.name  })
+  useEffect(() => {
+    navigation.setOptions({ title: nameAr });
+  },[])
 
   type Ayah = {
     number: number,
@@ -30,24 +33,29 @@ const Surah = ({ route, navigation }: any) => {
   if (isFetching) return <Loading size={70} />
   if (error) return <Text>an error accured check your network status</Text>
 
+  const ayahs: string[] = Object.values(data?.verse)
+
   return (
     <View style={ styles.container }>
       <ScrollView style={ styles.surah }>
+        <View style={styles.spacer}></View>
         {
-          data?.ayahs.map((item:Ayah) => (
-            <View key={item.number} >
-              <Text style={ styles.text } >
-                { item.text }
-              </Text>  
-              <Text style={ styles.ayah } >&nbsp;{ item.numberInSurah }&nbsp; { item.sajda && '🕌' }</Text>
-            </View> 
-          ))
+          <Text style={ styles.text } >
+            {
+              ayahs.map(item => (
+                <>
+                  { item } &nbsp;{ "\u06DD" }&nbsp;
+                </>
+              ))
+            }
+          </Text>
         }
+        <View style={styles.spacer}></View>
       </ScrollView> 
       <View style={styles.bottomBar}>
-        <Text style={styles.text}> { data?.englishName } </Text>
-        <Text style={styles.text}> { data?.numberOfAyahs } </Text>
         <Text style={styles.text}> { data?.name } </Text>
+        <Text style={styles.text}> { data?.count } </Text>
+        <Text style={styles.text}> { nameAr } </Text>
       </View>
     </View>
   )
@@ -58,6 +66,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     backgroundColor: '#fff',
+    justifyContent: 'center',
   },
   surah: {
     backgroundColor: '#0276ff',
@@ -65,20 +74,18 @@ const styles = StyleSheet.create({
     height: '85%',
     borderRadius: 5,
     alignContent: 'center',
-    paddingBottom: 50,
+    paddingBottom: 10,
   },
   text: {
     fontSize: 20,
     fontWeight: '600',
     textAlign: 'center',
     color: '#ffffff',
-    paddingVertical: 2,
     paddingHorizontal: 10
   },
   ayah: {
-    backgroundColor: '#fff',
     fontWeight: 'bold',
-    color: '#070606',
+    color: '#ffffff',
     borderRadius: 50,
     padding: 2,
     textAlign: 'center',
@@ -88,11 +95,16 @@ const styles = StyleSheet.create({
   bottomBar: {
     flex: 1,
     justifyContent: 'space-around',
-    backgroundColor: '#0276ff',
+    backgroundColor: '#00109e',
     flexDirection: 'row',
-    padding: 5,
+    color: '#fff',
     marginTop: 10,
+    paddingTop: 10,
+    paddingBottom: 5,
     borderRadius: 5,
+  },
+  spacer: {
+    height: 30
   }
 });
 
