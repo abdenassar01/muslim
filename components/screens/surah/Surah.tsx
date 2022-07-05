@@ -18,18 +18,6 @@ const Surah = ({ route, navigation }: any) => {
     navigation.setOptions({ title: nameAr });
   },[])
 
-  type Ayah = {
-    number: number,
-    text: string,
-    numberInSurah: number,
-    juz: number,
-    manzil: number,
-    page: number,
-    ruku: number,
-    hizbQuarter: number,
-    sajda: boolean
-  }
-
   if (isFetching) return <Loading size={70} />
   if (error) return <Text>an error accured check your network status</Text>
 
@@ -42,7 +30,7 @@ const Surah = ({ route, navigation }: any) => {
         {
           <Text style={ styles.text } >
             {
-              ayahs.map(item => (
+              ayahs.map((item:string) => (
                 <>
                   { item } &nbsp;{ "\u06DD" }&nbsp;
                 </>

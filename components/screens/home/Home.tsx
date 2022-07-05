@@ -21,11 +21,10 @@ const Home = ({ navigation }: any) => {
         <Pressable onPress={ () => navigation.navigate('Quran') } style={ styles.button }>
           <Text style={styles.text}>القرآن الکریم</Text>
         </Pressable>
-        <Pressable onPress={ () => navigation.navigate('Quran') } style={ styles.button }>
+        <Pressable onPress={ () => navigation.navigate('Dua') } style={ styles.button }>
           <Text style={styles.text}>دعاء</Text>
         </Pressable>
       </View>
-      
     </View>
   )
 }
