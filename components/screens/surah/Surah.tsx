@@ -13,7 +13,7 @@ const Surah = ({ route, navigation }: any) => {
     return response?.data.data
   })
 
-  navigation.setOptions({ title: data?.name ? data.name : "loading..." })
+  navigation.setOptions({ title: isFetching ? "loading..." : data?.name  })
 
   type Ayah = {
     number: number,

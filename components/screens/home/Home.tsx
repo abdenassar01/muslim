@@ -1,67 +1,31 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import instance from '../../../axios/axios';
-import { useQuery } from 'react-query';
-import React from 'react';
-import Loading from '../../loading/Loading';
- 
+import { View, Text, StyleSheet, Pressable } from 'react-native'
 
-const Home = ({ navigation }) => {
+const Home = ({ navigation }: any) => {
 
-const { data, isFetching, error } = useQuery("getAllSurah", async () => {
-  const response = await instance.get('/surah');
-  return response?.data.data
-})
+  navigation.setOptions({
+      title: "Muslim", 
+      headerStyle: styles.header, 
+      headerTitleStyle:{
+        color: 'white',
+        fontSize: 24,
+        fontWeight: '700',
+        fontStyle: 'italic' 
+      }
+    });
 
-type El = {
-  number : number,
-  name : string,
-  englishName : string,
-  englishNameTranslation : string,
-  numberOfAyahs : number,
-  revelationType : string
-}
-
-type Surah = {
-  id: number,
-  title: string
-}
-
-const list: Surah[] = data?.map((surah: El) => ({
-  id: surah.number,
-  title: surah.name,
-  englishTitle: surah.englishName
-}))
-
-
-const renderItem = ({ item }) => {
   return (
-    <TouchableOpacity
-      style={ styles.button }
-      onPress={ () => navigation.navigate('Surah', { id: item.id }) }
-    > 
-    <View style={styles.titleView}>
-      <Text style={ styles.text }>{item.englishTitle}</Text>
-      <Text style={ styles.text }>{item.title}</Text>
-    </View>
-    </TouchableOpacity>
-  )
-}
-
-  if (isFetching) return ( 
-   <Loading size={ 50 } /> 
-  )
-
-  if (error) return <Text>Error has accured</Text>
- 
-  return (
-    <View style={styles.container}>
-        <FlatList
-          data={ list }
-          renderItem={ renderItem }
-          keyExtractor={item => item.id}
-        />
-        <StatusBar style="auto" />
+    <View style={ styles.container }>
+      <Text style={ styles.heading }>بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</Text>
+      <Text>what would you like to see?</Text>
+      <View style={ styles.butons }>
+        <Pressable onPress={ () => navigation.navigate('Quran') } style={ styles.button }>
+          <Text style={styles.text}>القرآن الکریم</Text>
+        </Pressable>
+        <Pressable onPress={ () => navigation.navigate('Quran') } style={ styles.button }>
+          <Text style={styles.text}>دعاء</Text>
+        </Pressable>
+      </View>
+      
     </View>
   )
 }
@@ -69,25 +33,34 @@ const renderItem = ({ item }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#dcebfc'
+  },
+  heading: {
+    fontSize: 20,
+    fontWeight: '600',
   },
   button: {
-    padding: 10,
+    marginVertical: 20,
+    paddingHorizontal: 30,
+    paddingVertical: 10,
+    backgroundColor: '#0276ff',
+    borderRadius: 5,
+    marginHorizontal: 5,
   },
   text: {
-    textAlign: 'center',
-    fontSize: 20,
-    color: '#f1faf9'
+    color: '#fff',
+    fontWeight: '600',
+    fontSize: 17
   },
-  titleView: {
-    flex: 1,
-    justifyContent: 'space-between',
+  butons: {
+    justifyContent: 'space-around',
     flexDirection: 'row',
-    marginHorizontal: 2,
-    padding: 5,
+  },
+  header: {
     backgroundColor: '#0276ff',
-    borderRadius: 5
   }
-});
+})
 
 export default Home

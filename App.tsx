@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { QueryClientProvider, QueryClient } from 'react-query'; 
 
 import Home from './components/screens/home/Home';
+import Quran from './components/screens/quran/Quran';
 import Surah from './components/screens/surah/Surah';
 
 const Stack = createNativeStackNavigator();
@@ -13,7 +14,8 @@ export default function App() {
    <NavigationContainer>
     <QueryClientProvider client={ client }>
       <Stack.Navigator>
-        <Stack.Screen name='Muslim' component={ Home } />
+        <Stack.Screen name='Home' component={ Home } />
+        <Stack.Screen name='Quran' component={ Quran } />
         <Stack.Screen name='Surah' component={ Surah } />
       </Stack.Navigator>
     </QueryClientProvider>
