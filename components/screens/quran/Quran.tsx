@@ -1,36 +1,47 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import instance from '../../../axios/axios';
 import { useQuery } from 'react-query';
 import React from 'react';
+import axios from 'axios';
 import Loading from '../../loading/Loading';
  
 
 const Quran = ({ navigation }: any) => {
 
 const { data, isFetching, error } = useQuery("getAllSurah", async () => {
-  const response = await instance.get('/surah');
-  return response?.data.data
+  const response = await axios.get('https://raw.githubusercontent.com/semarketir/quranjson/master/source/surah.json');
+  return response?.data
 })
 
 type El = {
-  number : number,
-  name : string,
-  englishName : string,
-  englishNameTranslation : string,
-  numberOfAyahs : number,
-  revelationType : string
-}
+      place: string,
+      type: string,
+      count: number,
+      title: string,
+      titleAr: string,
+      index: string,
+      pages: string,
+      juz: [
+          {
+              index: string,
+              verse: {
+                  start: string,
+                  end: string
+              }
+          }
+      ]
+  }
 
 type Surah = {
   id: number,
-  title: string
+  title: string,
+  englishTitle: string
 }
 
 const list: Surah[] = data?.map((surah: El) => ({
-  id: surah.number,
-  title: surah.name,
-  englishTitle: surah.englishName
+  id: Number(surah.index),
+  title: surah.titleAr,
+  englishTitle: surah.title
 }))
 
 
