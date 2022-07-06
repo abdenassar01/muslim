@@ -1,8 +1,10 @@
+import { useEffect } from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 
 const Home = ({ navigation }: any) => {
 
-  navigation.setOptions({
+  useEffect(()=> {
+    navigation.setOptions({
       title: "Muslim", 
       headerStyle: styles.header, 
       headerTitleStyle:{
@@ -12,6 +14,7 @@ const Home = ({ navigation }: any) => {
         fontStyle: 'italic' 
       }
     });
+  }, [])
 
   return (
     <View style={ styles.container }>
