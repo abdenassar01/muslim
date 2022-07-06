@@ -11,7 +11,7 @@ const Doa = ({ navigation }: any) => {
             <Pressable onPress={ () => navigation.navigate('DuaDetal', { type: 'm' }) } style={ styles.button }>
                 <Text style={styles.text}>ادعية المساء</Text>
             </Pressable>
-            <Pressable onPress={ () => navigation.navigate('Quran') } style={ styles.button }>
+            <Pressable onPress={ () => navigation.navigate('Roqya') } style={ styles.button }>
                 <Text style={styles.text}>رقية شرعية</Text>
             </Pressable>
         </View>  

@@ -40,6 +40,7 @@ const DoaDetails = ({ navigation, route }: any) => {
 
   if (isFetching) return <Loading size={70} />
   if (error) return <Text>an error accured check your network status</Text>
+
   return (
     <ScrollView style={ styles.container }>
       {
@@ -76,7 +77,9 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#0d82f0',
     marginVertical: 5,
-    borderRadius: 5
+    borderWidth: 2,
+    borderColor: '#ffd518',
+    borderRadius: 10
   },
   text: {
     color: 'white',
@@ -94,13 +97,23 @@ const styles = StyleSheet.create({
   },
   desc: {
     color: 'white',
-    width: '70%'
+    width: '70%',
+    padding: 10,
+    borderStyle: 'solid',
+    borderWidth: 2,
+    borderColor: '#ffd518',
+    borderRadius: 10
   },
   count: {
-    color: 'white', 
-    width: '30%',
+    color: '#ffd518', 
     textAlign: 'center',
-    fontSize: 20
+    fontSize: 20,
+    width: 30,
+    height: 30,
+    borderRadius: 50,
+    borderStyle: 'solid',
+    borderWidth: 2,
+    borderColor: '#ffd518'
   },
   spacer: {
     height: 20

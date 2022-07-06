@@ -6,6 +6,7 @@ import DoaDetails from './components/screens/doa_detail/DoaDetails';
 
 import Home from './components/screens/home/Home';
 import Quran from './components/screens/quran/Quran';
+import Roqya from './components/screens/roqya/Roqya';
 import Surah from './components/screens/surah/Surah';
 
 const Stack = createNativeStackNavigator();
@@ -21,6 +22,7 @@ export default function App() {
         <Stack.Screen name='Dua' component={ Doa } />
         <Stack.Screen name='DuaDetal' component={ DoaDetails } />
         <Stack.Screen name='Surah' component={ Surah } />
+        <Stack.Screen name='Roqya' component={ Roqya } />
       </Stack.Navigator>
     </QueryClientProvider>
    </NavigationContainer>
