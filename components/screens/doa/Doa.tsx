@@ -5,10 +5,10 @@ const Doa = ({ navigation }: any) => {
     <View style={ styles.container }>
         <Text style={ styles.heading }>بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</Text>
         <View style={ styles.buttonWrapper }>
-            <Pressable onPress={ () => navigation.navigate('Quran') } style={ styles.button }>
+            <Pressable onPress={ () => navigation.navigate('DuaDetal', { type: 's' }) } style={ styles.button }>
                 <Text style={styles.text}>ادعية الصباح</Text>
             </Pressable>
-            <Pressable onPress={ () => navigation.navigate('Quran') } style={ styles.button }>
+            <Pressable onPress={ () => navigation.navigate('DuaDetal', { type: 'm' }) } style={ styles.button }>
                 <Text style={styles.text}>ادعية المساء</Text>
             </Pressable>
             <Pressable onPress={ () => navigation.navigate('Quran') } style={ styles.button }>
