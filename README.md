@@ -10,8 +10,8 @@
 
 - React Native
 - expo
-- [alquranJson]('https://github.com/semarketir/quranjson')
-- [azkardb]('https://github.com/osamayy/azkar-db')
+- [alquranJson](https://github.com/semarketir/quranjson)
+- [azkardb](https://github.com/osamayy/azkar-db)
  
 > ***This project is open source and under a free licence every one can submit changes to it and fork his own version of it.***
 
@@ -53,4 +53,4 @@
     ```
 </div>
 
-author: [@abdenassar01]("https://github.com/abdenassar01")
+author: [@abdenassar01](https://github.com/abdenassar01)
