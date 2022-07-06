@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { useQuery } from 'react-query';
 
 import Loading from '../../loading/Loading';
@@ -15,7 +15,20 @@ const Surah = ({ route, navigation }: any) => {
   })
 
   useEffect(() => {
-    navigation.setOptions({ title: nameAr });
+    navigation.setOptions({ 
+        title: " سورة" + nameAr , 
+        headerTitleStyle:{
+            color: '#0d82f0',
+            fontSize: 24,
+            fontWeight: '700',
+        },
+        headerTintColor: '#0d82f0',
+        headerLeft: () => (
+          <TouchableOpacity style={styles.headerBtn} onPress={ () => navigation.goBack() } >
+            <Image style={styles.icon} source={require('../../../assets/back.png')} />
+          </TouchableOpacity>
+        )
+     });
   },[])
 
   if (isFetching) return <Loading size={70} />
@@ -60,9 +73,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#0276ff',
     width: '100%',
     height: '85%',
-    borderRadius: 5,
     alignContent: 'center',
     paddingBottom: 10,
+    borderWidth: 2,
+    borderColor: '#ffd518',
+    borderRadius: 10
   },
   text: {
     fontSize: 20,
@@ -83,13 +98,23 @@ const styles = StyleSheet.create({
   bottomBar: {
     flex: 1,
     justifyContent: 'space-around',
-    backgroundColor: '#00109e',
+    backgroundColor: '#0276ff',
     flexDirection: 'row',
-    color: '#fff',
+    color: '#000000',
     marginTop: 10,
     paddingTop: 10,
     paddingBottom: 5,
-    borderRadius: 5,
+    borderWidth: 2,
+    borderColor: '#ffd518',
+    borderRadius: 10
+  },
+  headerBtn: {
+    marginRight: 20,
+  },
+  icon: {
+    width: 30,
+    height: 30,
+    resizeMode: 'stretch'
   },
   spacer: {
     height: 30

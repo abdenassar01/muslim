@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useQuery } from 'react-query';
 import React from 'react';
@@ -12,6 +12,23 @@ const { data, isFetching, error } = useQuery("getAllSurah", async () => {
   const response = await axios.get('https://raw.githubusercontent.com/semarketir/quranjson/master/source/surah.json');
   return response?.data
 })
+
+React.useEffect(() => {
+  navigation.setOptions({ 
+      title: "القرآن الکریم", 
+      headerTitleStyle:{
+          color: '#0d82f0',
+          fontSize: 24,
+          fontWeight: '700',
+      },
+      headerTintColor: '#0d82f0',
+      headerLeft: () => (
+        <TouchableOpacity style={styles.headerBtn} onPress={ () => navigation.goBack() } >
+          <Image style={styles.icon} source={require('../../../assets/back.png')} />
+        </TouchableOpacity>
+      )
+   });
+},[])
 
 type El = {
       place: string,
@@ -101,7 +118,15 @@ const styles = StyleSheet.create({
     padding: 5,
     backgroundColor: '#0276ff',
     borderRadius: 5
-  }
+  },
+  headerBtn: {
+    marginRight: 20,
+  },
+  icon: {
+    width: 30,
+    height: 30,
+    resizeMode: 'stretch'
+  },
 });
 
 export default Quran
