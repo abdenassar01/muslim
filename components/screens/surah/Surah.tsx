@@ -1,20 +1,38 @@
 import axios from 'axios';
-import { useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { useEffect, useState, Fragment } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Button, Pressable } from 'react-native';
+import { Audio } from 'expo-av';
 import { useQuery } from 'react-query';
 
 import Loading from '../../loading/Loading';
+import { Sound } from 'expo-av/build/Audio';
 
 const Surah = ({ route, navigation }: any) => {
 
   const { index, nameAr } = route.params;
+  const [ audio, setAudio ] = useState<Sound>()
+  const [ isPlayed, setPlayed ] = useState<boolean>(false)
 
   const { data, isFetching, error } = useQuery("surahDetails", async () => {
     const response = await axios.get(`https://raw.githubusercontent.com/semarketir/quranjson/master/source/surah/surah_${ index }.json`);
     return response?.data
   })
 
-  useEffect(() => {
+  async function playSurah() {
+    try{
+      const { sound } = await Audio.Sound.createAsync({
+        uri: `https://download.quranicaudio.com/quran/sa3d_al-ghaamidi/complete/${ index }.mp3`
+      }, {
+        shouldPlay: true
+      })
+      setAudio(sound);
+      await audio?.playAsync();
+    }catch(ex){
+      console.log(ex)
+    } 
+  } 
+
+  useEffect((): any => {
     navigation.setOptions({ 
         title: " سورة" + nameAr , 
         headerTitleStyle:{
@@ -29,7 +47,10 @@ const Surah = ({ route, navigation }: any) => {
           </TouchableOpacity>
         )
      });
-  },[])
+     return audio ?  () => {
+      audio.unloadAsync()
+    } : undefined
+  },[audio])
 
   if (isFetching) return <Loading size={70} />
   if (error) return <Text>an error accured check your network status</Text>
@@ -44,9 +65,9 @@ const Surah = ({ route, navigation }: any) => {
           <Text style={ styles.text } >
             {
               ayahs.map((item:string) => (
-                <>
+                <Fragment key={ Math.random() } >
                   { item } &nbsp;{ "\u06DD" }&nbsp;
-                </>
+                </Fragment>
               ))
             }
           </Text>
@@ -54,6 +75,9 @@ const Surah = ({ route, navigation }: any) => {
         <View style={styles.spacer}></View>
       </ScrollView> 
       <View style={styles.bottomBar}>
+        <Pressable onPress={ playSurah } >
+          <Text style={ styles.play }>▶</Text>
+        </Pressable>
         <Text style={styles.text}> { data?.name } </Text>
         <Text style={styles.text}> { data?.count } </Text>
         <Text style={styles.text}> { nameAr } </Text>
@@ -72,7 +96,7 @@ const styles = StyleSheet.create({
   surah: {
     backgroundColor: '#0276ff',
     width: '100%',
-    height: '85%',
+    height: '80%',
     alignContent: 'center',
     paddingBottom: 10,
     borderWidth: 2,
@@ -98,6 +122,7 @@ const styles = StyleSheet.create({
   bottomBar: {
     flex: 1,
     justifyContent: 'space-around',
+    alignItems: 'center',
     backgroundColor: '#0276ff',
     flexDirection: 'row',
     color: '#000000',
@@ -118,6 +143,17 @@ const styles = StyleSheet.create({
   },
   spacer: {
     height: 30
+  },
+  play: {
+    fontSize: 25,
+    color: 'white',
+    borderColor: 'white',
+    borderStyle: 'solid',
+    borderWidth: 2,
+    borderRadius: 50,
+    paddingHorizontal: 7,
+    paddingVertical: 3,
+    textAlign: 'center',
   }
 });
 
