@@ -9,17 +9,17 @@ const Home = ({ navigation }: any) => {
       headerStyle: styles.header, 
       headerTitleStyle:{
         color: 'white',
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: '700',
-        fontStyle: 'italic' 
-      }
+      },
+      headerTintColor: '#0B2239',
     });
   }, [])
 
   return (
     <View style={ styles.container }>
       <Text style={ styles.heading }>بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</Text>
-      <Text>what would you like to see?</Text>
+      <Text style={{ color: "#0B2239" }}>what would you like to see?</Text>
       <View style={ styles.butons }>
         <Pressable onPress={ () => navigation.navigate('Quran') } style={ styles.button }>
           <Text style={styles.text}>القرآن الکریم</Text>
@@ -37,31 +37,33 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#dcebfc'
+    backgroundColor: '#ffffff'
   },
   heading: {
-    fontSize: 20,
+    fontSize: 30,
+    fontFamily: 'Amiri',
     fontWeight: '600',
+    color: '#0B2239'
   },
   button: {
     marginVertical: 20,
-    paddingHorizontal: 30,
-    paddingVertical: 10,
-    backgroundColor: '#0276ff',
-    borderRadius: 5,
+    width: 150,
+    backgroundColor: '#0B2239',
+    borderRadius: 50,
     marginHorizontal: 5,
   },
   text: {
     color: '#fff',
-    fontWeight: '600',
-    fontSize: 17
+    fontSize: 16,
+    fontFamily: 'Amiri',
+    textAlign: 'center'
   },
   butons: {
     justifyContent: 'space-around',
     flexDirection: 'row',
   },
   header: {
-    backgroundColor: '#0276ff',
+    backgroundColor: "#0B2239",
   }
 })
 

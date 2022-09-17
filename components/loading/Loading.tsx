@@ -8,7 +8,7 @@ type Props = {
 const Loading = ({ size }: Props) => {
   return (
     <View style={ styles.loader }>
-        <Bounce color='#0276ff' size={ size } />
+        <Bounce color='#0B2239' size={ size } />
         <Text>Please Wait. We are getting it ready for you</Text>
     </View>
   )

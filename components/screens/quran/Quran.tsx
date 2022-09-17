@@ -15,13 +15,13 @@ const { data, isFetching, error } = useQuery("getAllSurah", async () => {
 
 React.useEffect(() => {
   navigation.setOptions({ 
-      title: "القرآن الکریم", 
+      title: "القرآن الکریم",
       headerTitleStyle:{
-          color: '#0d82f0',
+          color: '#0B2239',
           fontSize: 24,
           fontWeight: '700',
       },
-      headerTintColor: '#0d82f0',
+      headerTintColor: '#0B2239',
       headerLeft: () => (
         <TouchableOpacity style={styles.headerBtn} onPress={ () => navigation.goBack() } >
           <Image style={styles.icon} source={require('../../../assets/back.png')} />
@@ -102,29 +102,29 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   button: {
-    padding: 10,
-    marginVertical: -7
+    padding: 5,
   },
   text: {
     textAlign: 'center',
-    fontSize: 20,
-    color: '#f1faf9'
+    fontSize: 16,
+    color: '#f1faf9',
+    fontFamily: 'Amiri'
   },
   titleView: {
     flex: 1,
     justifyContent: 'space-between',
     flexDirection: 'row',
     marginHorizontal: 2,
-    padding: 5,
-    backgroundColor: '#0276ff',
-    borderRadius: 5
+    paddingHorizontal: 20,
+    backgroundColor: '#0B2239',
+    borderRadius: 10
   },
   headerBtn: {
     marginRight: 20,
   },
   icon: {
-    width: 30,
-    height: 30,
+    width: 25,
+    height: 25,
     resizeMode: 'stretch'
   },
 });

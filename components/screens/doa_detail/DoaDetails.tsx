@@ -25,11 +25,11 @@ const DoaDetails = ({ navigation, route }: any) => {
     navigation.setOptions({ 
         title: type === 's' ? "ادعية الصباح" : "ادعية المساء", 
         headerTitleStyle:{
-            color: '#0d82f0',
+            color: '#0B2239',
             fontSize: 24,
             fontWeight: '700',
         },
-        headerTintColor: '#0d82f0',
+        headerTintColor: '#0B2239',
         headerLeft: () => (
           <TouchableOpacity style={styles.headerBtn} onPress={ () => navigation.goBack() } >
             <Image style={styles.icon} source={require('../../../assets/back.png')} />
@@ -50,7 +50,7 @@ const DoaDetails = ({ navigation, route }: any) => {
               <Text style={styles.text}>{ doa.zekr }</Text>
             </View>
             <View style={styles.bottomSection}>
-              <Text style={styles.desc}>{ doa.desc }</Text>
+              <Text style={styles.desc}>{ doa?.desc }</Text>
               <Text style={styles.count}>{ doa.count }</Text>
             </View>
           </View>
@@ -63,7 +63,7 @@ const DoaDetails = ({ navigation, route }: any) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 15
+    padding: 15,
   },
   headerBtn: {
     marginRight: 20,
@@ -74,17 +74,17 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch'
   },
   zekrCard: {
-    padding: 10,
-    backgroundColor: '#0d82f0',
+    padding: 5,
+    backgroundColor: '#0B2239',
     marginVertical: 5,
-    borderWidth: 2,
-    borderColor: '#ffd518',
     borderRadius: 10
   },
   text: {
     color: 'white',
-    fontSize: 18,
-    textAlign: 'center'
+    fontSize: 16,
+    textAlign: 'center',
+    fontFamily: 'Amiri',
+    lineHeight: 40
   },
   zekr: {
     paddingBottom: 20
@@ -97,15 +97,17 @@ const styles = StyleSheet.create({
   },
   desc: {
     color: 'white',
-    width: '70%',
-    padding: 10,
+    width: '80%',
+    textAlign: 'center',
+    padding: 5,
     borderStyle: 'solid',
     borderWidth: 2,
-    borderColor: '#ffd518',
+    fontFamily: 'Amiri',
+    borderColor: '#fff',
     borderRadius: 10
   },
   count: {
-    color: '#ffd518', 
+    color: '#fff', 
     textAlign: 'center',
     fontSize: 20,
     width: 30,
@@ -113,7 +115,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderStyle: 'solid',
     borderWidth: 2,
-    borderColor: '#ffd518'
+    borderColor: '#fff'
   },
   spacer: {
     height: 20

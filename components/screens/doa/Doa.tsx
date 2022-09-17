@@ -7,11 +7,11 @@ const Doa = ({ navigation }: any) => {
         navigation.setOptions({ 
             title: "ادعية ", 
             headerTitleStyle:{
-                color: '#0d82f0',
+                color: '#0B2239',
                 fontSize: 24,
                 fontWeight: '700',
             },
-            headerTintColor: '#0d82f0',
+            headerTintColor: '#0B2239',
             headerLeft: () => (
               <Pressable style={styles.headerBtn} onPress={ () => navigation.goBack() } >
                 <Image style={styles.icon} source={require('../../../assets/back.png')} />
@@ -42,27 +42,32 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'white',
     },
     heading: {
-        fontSize: 24
+        fontSize: 34,
+        fontFamily: 'Amiri',
+        color: '#0B2239'
     },
     text: {
         color: '#fff',
-        fontSize: 18
+        fontSize: 18,
+        fontFamily: 'Amiri',
+        textAlign: 'center',
+        marginTop: -5
     },
     buttonWrapper: {
         marginTop: 20,
     },
     button: {
         marginVertical: 5,
-        paddingHorizontal: 30,
-        paddingVertical: 10,
-        backgroundColor: '#0276ff',
-        borderRadius: 5,
+        minWidth: 200,
+        backgroundColor: '#0B2239',
+        borderRadius: 50,
     },
     headerBtn: {
-    marginRight: 20,
+        marginRight: 20,
     },
     icon: {
     width: 30,

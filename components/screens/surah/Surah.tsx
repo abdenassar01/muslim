@@ -3,11 +3,16 @@ import { useEffect, useState, Fragment } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Button, Pressable } from 'react-native';
 import { Audio } from 'expo-av';
 import { useQuery } from 'react-query';
+import { useFonts } from 'expo-font';
 
 import Loading from '../../loading/Loading';
 import { Sound } from 'expo-av/build/Audio';
 
 const Surah = ({ route, navigation }: any) => {
+
+  const [fontsLoaded] = useFonts({
+    'Amiri': require('../../../assets/fonts/Amiri-Regular.ttf'),
+  });
 
   const { index, nameAr } = route.params;
   const [ audio, setAudio ] = useState<Sound>()
@@ -29,18 +34,18 @@ const Surah = ({ route, navigation }: any) => {
       await audio?.playAsync();
     }catch(ex){
       console.log(ex)
-    } 
-  } 
+    }
+  }
 
   useEffect((): any => {
-    navigation.setOptions({ 
-        title: " سورة" + nameAr , 
+    navigation.setOptions({
+        title: " سورة" + nameAr ,
         headerTitleStyle:{
-            color: '#0d82f0',
+            color: '#0B2239',
             fontSize: 24,
             fontWeight: '700',
         },
-        headerTintColor: '#0d82f0',
+        headerTintColor: '#0B2239',
         headerLeft: () => (
           <TouchableOpacity style={styles.headerBtn} onPress={ () => navigation.goBack() } >
             <Image style={styles.icon} source={require('../../../assets/back.png')} />
@@ -65,15 +70,15 @@ const Surah = ({ route, navigation }: any) => {
           <Text style={ styles.text } >
             {
               ayahs.map((item:string) => (
-                <Fragment key={ Math.random() } >
+                <Text key={ Math.random() } style={ styles.ayahText } >
                   { item } &nbsp;{ "\u06DD" }&nbsp;
-                </Fragment>
+                </Text>
               ))
             }
           </Text>
         }
         <View style={styles.spacer}></View>
-      </ScrollView> 
+      </ScrollView>
       <View style={styles.bottomBar}>
         <Pressable onPress={ playSurah } >
           <Text style={ styles.play }>▶</Text>
@@ -94,13 +99,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   surah: {
-    backgroundColor: '#0276ff',
+    backgroundColor: '#0B2239',
     width: '100%',
     height: '80%',
     alignContent: 'center',
     paddingBottom: 10,
-    borderWidth: 2,
-    borderColor: '#ffd518',
+
     borderRadius: 10
   },
   text: {
@@ -108,7 +112,14 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
     color: '#ffffff',
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    fontFamily: 'Amiri'
+  },
+  ayahText: {
+    fontFamily: 'Amiri',
+    fontSize: 25,
+    lineHeight: 50
+    // color: "blue"
   },
   ayah: {
     fontWeight: 'bold',
@@ -123,15 +134,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#0276ff',
+    backgroundColor: '#0B2239',
     flexDirection: 'row',
-    color: '#000000',
+    color: '#0B2239',
     marginTop: 10,
     paddingTop: 10,
     paddingBottom: 5,
-    borderWidth: 2,
-    borderColor: '#ffd518',
-    borderRadius: 10
+    borderRadius: 50
   },
   headerBtn: {
     marginRight: 20,
