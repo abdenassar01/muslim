@@ -26,8 +26,9 @@ const DoaDetails = ({ navigation, route }: any) => {
         title: type === 's' ? "ادعية الصباح" : "ادعية المساء", 
         headerTitleStyle:{
             color: '#0B2239',
+            fontFamily: 'Amiri',
             fontSize: 24,
-            fontWeight: '700',
+            fontWeight: '200',
         },
         headerTintColor: '#0B2239',
         headerLeft: () => (

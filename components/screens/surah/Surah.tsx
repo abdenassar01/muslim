@@ -41,9 +41,10 @@ const Surah = ({ route, navigation }: any) => {
     navigation.setOptions({
         title: " سورة" + nameAr ,
         headerTitleStyle:{
-            color: '#0B2239',
-            fontSize: 24,
-            fontWeight: '700',
+          color: '#0B2239',
+          fontFamily: 'Amiri',
+          fontSize: 24,
+          fontWeight: '200',
         },
         headerTintColor: '#0B2239',
         headerLeft: () => (

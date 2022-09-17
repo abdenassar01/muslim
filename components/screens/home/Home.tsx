@@ -8,9 +8,10 @@ const Home = ({ navigation }: any) => {
       title: "Muslim", 
       headerStyle: styles.header, 
       headerTitleStyle:{
-        color: 'white',
-        fontSize: 20,
-        fontWeight: '700',
+        color: '#fff',
+        fontFamily: 'Amiri',
+        fontSize: 24,
+        fontWeight: '200',
       },
       headerTintColor: '#0B2239',
     });
