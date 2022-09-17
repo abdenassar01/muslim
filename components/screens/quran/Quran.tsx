@@ -4,6 +4,7 @@ import { useQuery } from 'react-query';
 import React from 'react';
 import axios from 'axios';
 import Loading from '../../loading/Loading';
+import Error from '../error/Error';
  
 
 const Quran = ({ navigation }: any) => {
@@ -83,7 +84,7 @@ const renderItem = ({ item }: any) => {
    <Loading size={ 50 } /> 
   )
 
-  if (error) return <Text>Error has accured</Text>
+  if (error) return navigation.navigate('Error');
  
   return (
     <View style={styles.container}>

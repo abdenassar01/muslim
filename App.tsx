@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { QueryClientProvider, QueryClient } from 'react-query'; 
 import Doa from './components/screens/doa/Doa';
 import DoaDetails from './components/screens/doa_detail/DoaDetails';
+import Error from './components/screens/error/Error';
 
 import Home from './components/screens/home/Home';
 import Quran from './components/screens/quran/Quran';
@@ -23,6 +24,7 @@ export default function App() {
         <Stack.Screen name='DuaDetal' component={ DoaDetails } />
         <Stack.Screen name='Surah' component={ Surah } />
         <Stack.Screen name='Roqya' component={ Roqya } />
+        <Stack.Screen name='Error' component={ Error } />
       </Stack.Navigator>
     </QueryClientProvider>
    </NavigationContainer>

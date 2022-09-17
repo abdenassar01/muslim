@@ -40,7 +40,7 @@ const DoaDetails = ({ navigation, route }: any) => {
   },[])
 
   if (isFetching) return <Loading size={70} />
-  if (error) return <Text>an error accured check your network status</Text>
+  if (error) return navigation.navigate('Error');
 
   return (
     <ScrollView style={ styles.container }>

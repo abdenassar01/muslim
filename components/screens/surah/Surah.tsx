@@ -59,7 +59,7 @@ const Surah = ({ route, navigation }: any) => {
   },[audio])
 
   if (isFetching) return <Loading size={70} />
-  if (error) return <Text>an error accured check your network status</Text>
+  if (error) return navigation.navigate('Error');
 
   const ayahs: string[] = Object.values(data?.verse)
 

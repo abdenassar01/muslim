@@ -27,7 +27,7 @@ const Home = ({ navigation }: any) => {
         </Pressable>
         <Pressable onPress={ () => navigation.navigate('Dua') } style={ styles.button }>
           <Text style={styles.text}>دعاء</Text>
-        </Pressable>
+        </Pressable>   
       </View>
     </View>
   )
