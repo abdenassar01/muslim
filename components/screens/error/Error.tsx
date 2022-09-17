@@ -14,7 +14,7 @@ const Error = ({ navigation }: any) => {
             },
             headerTintColor: '#0B2239',
             headerLeft: () => (
-              <TouchableOpacity style={styles.btnText} onPress={ () => navigation.goBack() } >
+              <TouchableOpacity onPress={ () => navigation.goBack() } >
                 <Image style={styles.icon} source={require('../../../assets/back.png')} />
               </TouchableOpacity>
             )

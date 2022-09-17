@@ -23,20 +23,6 @@ const Surah = ({ route, navigation }: any) => {
     return response?.data
   })
 
-  async function playSurah() {
-    try{
-      const { sound } = await Audio.Sound.createAsync({
-        uri: `https://download.quranicaudio.com/quran/sa3d_al-ghaamidi/complete/${ index }.mp3`
-      }, {
-        shouldPlay: true
-      })
-      setAudio(sound);
-      await audio?.playAsync();
-    }catch(ex){
-      console.log(ex)
-    }
-  }
-
   useEffect((): any => {
     navigation.setOptions({
         title: " سورة" + nameAr ,
@@ -81,9 +67,6 @@ const Surah = ({ route, navigation }: any) => {
         <View style={styles.spacer}></View>
       </ScrollView>
       <View style={styles.bottomBar}>
-        <Pressable onPress={ playSurah } >
-          <Text style={ styles.play }>▶</Text>
-        </Pressable>
         <Text style={styles.text}> { data?.name } </Text>
         <Text style={styles.text}> { data?.count } </Text>
         <Text style={styles.text}> { nameAr } </Text>
