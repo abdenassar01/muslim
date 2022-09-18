@@ -1,18 +1,10 @@
 import axios from 'axios';
-import { useEffect, useState, Fragment } from 'react';
+import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Button, Pressable } from 'react-native';
-import { Audio } from 'expo-av';
 import { useQuery } from 'react-query';
-import { useFonts } from 'expo-font';
-
 import Loading from '../../loading/Loading';
-import { Sound } from 'expo-av/build/Audio';
 
 const Surah = ({ route, navigation }: any) => {
-
-  const [fontsLoaded] = useFonts({
-    'Amiri': require('../../../assets/fonts/Amiri-Regular.ttf'),
-  });
 
   const { index, nameAr } = route.params;
   const [ audio, setAudio ] = useState<Sound>()

@@ -1,9 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useFonts } from 'expo-font';
+import { Text, View } from 'react-native';
 import { QueryClientProvider, QueryClient } from 'react-query'; 
+import Loading from './components/loading/Loading';
 import Doa from './components/screens/doa/Doa';
 import DoaDetails from './components/screens/doa_detail/DoaDetails';
-import Error from './components/screens/error/Error';
 
 import Home from './components/screens/home/Home';
 import Quran from './components/screens/quran/Quran';
@@ -14,7 +16,12 @@ const Stack = createNativeStackNavigator();
 const client = new QueryClient();
 
 export default function App() {
-  return (
+
+  const [fontsLoaded] = useFonts({
+    'Amiri': require('./assets/fonts/Amiri-Regular.ttf'),
+  });
+
+  return fontsLoaded ? (
    <NavigationContainer>
     <QueryClientProvider client={ client }>
       <Stack.Navigator>
@@ -24,9 +31,8 @@ export default function App() {
         <Stack.Screen name='DuaDetal' component={ DoaDetails } />
         <Stack.Screen name='Surah' component={ Surah } />
         <Stack.Screen name='Roqya' component={ Roqya } />
-        <Stack.Screen name='Error' component={ Error } />
       </Stack.Navigator>
     </QueryClientProvider>
    </NavigationContainer>
-  );
+  ) : <Loading size={ 50 } />;
 }
