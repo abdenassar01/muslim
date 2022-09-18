@@ -3,12 +3,11 @@ import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Button, Pressable } from 'react-native';
 import { useQuery } from 'react-query';
 import Loading from '../../loading/Loading';
+import Error from '../error/Error';
 
 const Surah = ({ route, navigation }: any) => {
 
   const { index, nameAr } = route.params;
-  const [ audio, setAudio ] = useState<Sound>()
-  const [ isPlayed, setPlayed ] = useState<boolean>(false)
 
   const { data, isFetching, error } = useQuery("surahDetails", async () => {
     const response = await axios.get(`https://raw.githubusercontent.com/semarketir/quranjson/master/source/surah/surah_${ index }.json`);
@@ -31,13 +30,11 @@ const Surah = ({ route, navigation }: any) => {
           </TouchableOpacity>
         )
      });
-     return audio ?  () => {
-      audio.unloadAsync()
-    } : undefined
-  },[audio])
+    
+  },[])
 
   if (isFetching) return <Loading size={70} />
-  if (error) return navigation.navigate('Error');
+  if (error) return <Error />;
 
   const ayahs: string[] = Object.values(data?.verse)
 
@@ -77,25 +74,22 @@ const styles = StyleSheet.create({
   surah: {
     backgroundColor: '#0B2239',
     width: '100%',
-    height: '80%',
+    height: '85%',
     alignContent: 'center',
     paddingBottom: 10,
-
     borderRadius: 10
   },
   text: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: '600',
     textAlign: 'center',
     color: '#ffffff',
-    paddingHorizontal: 10,
     fontFamily: 'Amiri'
   },
   ayahText: {
     fontFamily: 'Amiri',
     fontSize: 25,
     lineHeight: 50
-    // color: "blue"
   },
   ayah: {
     fontWeight: 'bold',
@@ -113,9 +107,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#0B2239',
     flexDirection: 'row',
     color: '#0B2239',
-    marginTop: 10,
-    paddingTop: 10,
-    paddingBottom: 5,
+    marginTop: 5,
+    paddingBottom: 10,
+    fontSize: 16,
     borderRadius: 50
   },
   headerBtn: {

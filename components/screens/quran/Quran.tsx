@@ -84,14 +84,14 @@ const renderItem = ({ item }: any) => {
    <Loading size={ 50 } /> 
   )
 
-  if (error) return navigation.navigate('Error');
+  if (error) navigation.navigate('Error')
  
   return (
     <View style={styles.container}>
         <FlatList
           data={ list }
           renderItem={ renderItem }
-          keyExtractor={(item) => item.id}
+          keyExtractor={ (item) => item.id.toString() }
         />
         <StatusBar style="auto" />
     </View>
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 2,
     paddingHorizontal: 20,
     backgroundColor: '#0B2239',
-    borderRadius: 10
+    borderRadius: 50
   },
   headerBtn: {
     marginRight: 20,
