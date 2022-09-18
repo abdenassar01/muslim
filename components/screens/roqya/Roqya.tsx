@@ -11,11 +11,11 @@ const Roqya = ({ navigation }: any) => {
         navigation.setOptions({ 
             title: "رقية شرعية", 
             headerTitleStyle:{
-                color: '#0d82f0',
+                color: '#0B2239',
                 fontSize: 24,
                 fontWeight: '700',
             },
-            headerTintColor: '#0d82f0',
+            headerTintColor: '#0B2239',
             headerLeft: () => (
               <TouchableOpacity style={styles.headerBtn} onPress={ () => navigation.goBack() } >
                 <Image style={styles.icon} source={require('../../../assets/back.png')} />
@@ -37,7 +37,7 @@ const Roqya = ({ navigation }: any) => {
       }
 
     if (isFetching) return <Loading size={70} />
-    if (error) return <Text>an error accured check your network status</Text>
+    if (error) return navigation.navigate('Error');
   
       
   return (
@@ -74,14 +74,13 @@ const styles = StyleSheet.create({
     },
     zekrCard: {
         padding: 10,
-        backgroundColor: '#0d82f0',
+        backgroundColor: '#0B2239',
         marginVertical: 5,
-        borderWidth: 2,
-        borderColor: '#ffd518',
         borderRadius: 10
     },
     text: {
         color: 'white',
+        fontFamily: 'Amiri',
         fontSize: 18,
         textAlign: 'center'
     },
@@ -96,10 +95,11 @@ const styles = StyleSheet.create({
     },
     desc: {
         color: 'white',
-        width: '70%'
+        width: '80%',
+        fontFamily: 'Amiri',
     },
     count: {
-        color: '#ffd518', 
+        color: '#fff', 
         textAlign: 'center',
         fontSize: 20,
         width: 30,
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         borderStyle: 'solid',
         borderWidth: 2,
-        borderColor: '#ffd518'
+        borderColor: '#fff'
     },
     spacer: {
         height: 20
