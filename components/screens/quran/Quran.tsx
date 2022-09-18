@@ -125,8 +125,8 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   icon: {
-    width: 25,
-    height: 25,
+    width: 30,
+    height: 30,
     resizeMode: 'stretch'
   },
 });

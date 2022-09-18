@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   },
   ayahText: {
     fontFamily: 'Amiri',
-    fontSize: 25,
+    fontSize: 20,
     lineHeight: 50
   },
   ayah: {
