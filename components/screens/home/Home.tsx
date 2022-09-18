@@ -30,8 +30,8 @@ const Home = ({ navigation }: any) => {
         </Pressable>   
       </View>
       <Pressable onPress={ () => navigation.navigate('Azkar') } style={ styles.button }>
-          <Text style={styles.text}>أذكار و أدعية</Text>
-        </Pressable>
+        <Text style={styles.text}>أذكار و أدعية بدون أنترنت</Text>
+      </Pressable>
     </View>
   )
 }
@@ -51,9 +51,10 @@ const styles = StyleSheet.create({
   },
   button: {
     marginVertical: 20,
-    width: 150,
+    minWidth: 150,
     backgroundColor: '#0B2239',
     borderRadius: 50,
+    paddingHorizontal: 20,
     marginHorizontal: 5,
   },
   text: {
