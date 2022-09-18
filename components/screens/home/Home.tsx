@@ -29,6 +29,9 @@ const Home = ({ navigation }: any) => {
           <Text style={styles.text}>دعاء</Text>
         </Pressable>   
       </View>
+      <Pressable onPress={ () => navigation.navigate('Azkar') } style={ styles.button }>
+          <Text style={styles.text}>أذكار و أدعية</Text>
+        </Pressable>
     </View>
   )
 }

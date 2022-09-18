@@ -1,4 +1,6 @@
-export const AzkarSalat = [
+import { Zekr } from "./types";
+
+export const AZKARSALAT: Zekr[] = [
 	{
         "category": "دعاء دخول الخلاء - الحمام",
         "zekr": "([بِسْمِ اللَّهِ] اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبْثِ وَالْخَبائِث)."
