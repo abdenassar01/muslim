@@ -1,3 +1,4 @@
+import Slider from '@react-native-community/slider';
 import { useEffect } from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 
@@ -32,6 +33,13 @@ const Home = ({ navigation }: any) => {
       <Pressable onPress={ () => navigation.navigate('Azkar') } style={ styles.button }>
         <Text style={styles.text}>أذكار و أدعية بدون أنترنت</Text>
       </Pressable>
+      <Slider 
+        style={{width: 200, height: 40}}
+        minimumValue={0}
+        maximumValue={10}
+        minimumTrackTintColor="#770303"
+        maximumTrackTintColor="#000000"
+      />
     </View>
   )
 }
