@@ -5,34 +5,17 @@ import { useRootStore } from '../../../model/root';
 import { observer } from 'mobx-react-lite';
 
 const Home = observer(({ navigation }: any) => {
-
-  // const [ fontSize, setFontSize ] = useState<number>(16);
-
-  // const getFont = async () => {
-  //   try {
-  //     const value = await AsyncStorage.getItem('fontSize')
-  //     if(value !== null) {
-  //       setFontSize(Math.floor(parseInt(value)))
-  //     }else{
-  //       storeData("16")
-  //     }
-  //   } catch(e) {
-  //     navigation.navigate('Error');
-  //   }
-  // }
-
-  // const storeData = async (value: string) => {
-  //   try {
-  //     await AsyncStorage.setItem('fontSize', value)
-  //   } catch (e) {
-  //     navigation.navigate('Error');
-  //   }
-  // }
-
+  
   const root = useRootStore();
 
+  const [ value, setValue ] = useState<number>()
+
+  const onChange = (value: number) => {
+    setValue(value)
+    root.setFontSize(Math.floor(value))
+  }
+
   useEffect(()=> {
-    // getFont()
     navigation.setOptions({
       title: "Muslim", 
       headerStyle: styles.header, 
@@ -44,7 +27,7 @@ const Home = observer(({ navigation }: any) => {
       },
       headerTintColor: '#0B2239',
     });
-  }, [])
+  }, [ ])
 
   return (
     <View style={ styles.container }>
@@ -62,18 +45,18 @@ const Home = observer(({ navigation }: any) => {
         <Text style={styles.text}>أذكار و أدعية بدون أنترنت</Text>
       </Pressable>
 
-      <View>
-        <Text>Change Font Size</Text>
+      <View style={{ alignItems: "center"  }}>
+        <Text style={{ fontWeight: "bold", color: "#0B2239" }}>Change font size</Text>
         <View style={{ flexDirection: 'row', alignItems: "center", width: "50%" }}>
             <Slider 
               style={{width: "90%", height: 40}}
               minimumValue={12}
               maximumValue={30}
-              value={ root.fontSize }
+              value={ value }
               thumbTintColor="#0B2239"
               minimumTrackTintColor="#0B2239"
               maximumTrackTintColor="#000000"
-              onValueChange={ (value) => root.setFontSize(Math.floor(value)) }
+              onValueChange={ onChange }
           />
           <Text>{ root.fontSize }</Text>
         </View>
