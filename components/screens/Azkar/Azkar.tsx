@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { AZKARSALAT } from '../../../assets/AzkarSalat';
+import { useRootStore } from '../../../model/root';
 
 const Azkar = ({ navigation }: any) => {
+
+  const root = useRootStore()
 
   useEffect(() => {
     navigation.setOptions({ 
@@ -31,7 +34,7 @@ const Azkar = ({ navigation }: any) => {
                 <Text style={styles.desc}>{ item.category }</Text>
               </View>
               <View style={styles.zekr}>
-                <Text style={styles.text}>{ item.zekr }</Text>
+                <Text style={[styles.text, { fontSize: root.fontSize }]}>{ item.zekr }</Text>
               </View>
           </View>
         ))
@@ -46,7 +49,7 @@ export default Azkar
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
+    padding: 5,
   },
   headerBtn: {
     marginRight: 20,
@@ -64,7 +67,6 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white',
-    fontSize: 18,
     textAlign: 'center',
     fontFamily: 'Amiri',
     lineHeight: 40
