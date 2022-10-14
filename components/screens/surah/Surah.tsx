@@ -1,13 +1,17 @@
 import axios from 'axios';
+import { observer } from 'mobx-react-lite';
+import { isRoot } from 'mobx-state-tree';
 import { useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Button, Pressable, RefreshControl } from 'react-native';
 import { useQuery } from 'react-query';
+import { useRootStore } from '../../../model/root';
 import Loading from '../../loading/Loading';
 import Error from '../error/Error';
 
 const Surah = ({ route, navigation }: any) => {
 
   const { index, nameAr } = route.params;
+  const root = useRootStore();
 
   const { data, isFetching, error } = useQuery("surahDetails", async () => {
     const response = await axios.get(`https://raw.githubusercontent.com/semarketir/quranjson/master/source/surah/surah_${ index }.json`);
@@ -42,7 +46,7 @@ const Surah = ({ route, navigation }: any) => {
       <ScrollView style={ styles.surah } >
         <View style={styles.spacer}></View>
         {
-          <Text style={ styles.text } >
+          <Text style={[ styles.text , { fontSize: root.fontSize } ]} >
             {
               ayahs.map((item:string) => (
                 <Text key={ Math.random() } style={ styles.ayahText } >
@@ -80,7 +84,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10
   },
   text: {
-    fontSize: 16,
     fontWeight: '600',
     textAlign: 'center',
     color: '#ffffff',
@@ -88,7 +91,6 @@ const styles = StyleSheet.create({
   },
   ayahText: {
     fontFamily: 'Amiri',
-    fontSize: 20,
     lineHeight: 50
   },
   ayah: {

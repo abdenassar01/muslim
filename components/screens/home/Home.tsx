@@ -1,35 +1,38 @@
 import Slider from '@react-native-community/slider';
 import { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native'
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useRootStore } from '../../../model/root';
+import { observer } from 'mobx-react-lite';
 
-const Home = ({ navigation }: any) => {
+const Home = observer(({ navigation }: any) => {
 
-  const [ fontSize, setFontSize ] = useState<number>(16);
+  // const [ fontSize, setFontSize ] = useState<number>(16);
 
-  const getFont = async () => {
-    try {
-      const value = await AsyncStorage.getItem('fontSize')
-      if(value !== null) {
-        setFontSize(Math.floor(parseInt(value)))
-      }else{
-        storeData("16")
-      }
-    } catch(e) {
-      navigation.navigate('Error');
-    }
-  }
+  // const getFont = async () => {
+  //   try {
+  //     const value = await AsyncStorage.getItem('fontSize')
+  //     if(value !== null) {
+  //       setFontSize(Math.floor(parseInt(value)))
+  //     }else{
+  //       storeData("16")
+  //     }
+  //   } catch(e) {
+  //     navigation.navigate('Error');
+  //   }
+  // }
 
-  const storeData = async (value: string) => {
-    try {
-      await AsyncStorage.setItem('fontSize', value)
-    } catch (e) {
-      navigation.navigate('Error');
-    }
-  }
+  // const storeData = async (value: string) => {
+  //   try {
+  //     await AsyncStorage.setItem('fontSize', value)
+  //   } catch (e) {
+  //     navigation.navigate('Error');
+  //   }
+  // }
+
+  const root = useRootStore();
 
   useEffect(()=> {
-    getFont()
+    // getFont()
     navigation.setOptions({
       title: "Muslim", 
       headerStyle: styles.header, 
@@ -64,20 +67,20 @@ const Home = ({ navigation }: any) => {
         <View style={{ flexDirection: 'row', alignItems: "center", width: "50%" }}>
             <Slider 
               style={{width: "90%", height: 40}}
-              minimumValue={5}
+              minimumValue={12}
               maximumValue={30}
-              value={ Math.floor(fontSize) }
-              thumbTintColor="#af13b4"
-              minimumTrackTintColor="#033f77"
+              value={ root.fontSize }
+              thumbTintColor="#0B2239"
+              minimumTrackTintColor="#0B2239"
               maximumTrackTintColor="#000000"
-              onValueChange={ (value) => setFontSize(value) }
+              onValueChange={ (value) => root.setFontSize(Math.floor(value)) }
           />
-          <Text>{ Math.floor(fontSize) }</Text>
+          <Text>{ root.fontSize }</Text>
         </View>
       </View>
     </View>
   )
-}
+})
 
 const styles = StyleSheet.create({
   container: {
