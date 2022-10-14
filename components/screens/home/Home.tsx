@@ -1,10 +1,35 @@
 import Slider from '@react-native-community/slider';
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Home = ({ navigation }: any) => {
 
+  const [ fontSize, setFontSize ] = useState<number>(16);
+
+  const getFont = async () => {
+    try {
+      const value = await AsyncStorage.getItem('fontSize')
+      if(value !== null) {
+        setFontSize(Math.floor(parseInt(value)))
+      }else{
+        storeData("16")
+      }
+    } catch(e) {
+      navigation.navigate('Error');
+    }
+  }
+
+  const storeData = async (value: string) => {
+    try {
+      await AsyncStorage.setItem('fontSize', value)
+    } catch (e) {
+      navigation.navigate('Error');
+    }
+  }
+
   useEffect(()=> {
+    getFont()
     navigation.setOptions({
       title: "Muslim", 
       headerStyle: styles.header, 
@@ -33,13 +58,23 @@ const Home = ({ navigation }: any) => {
       <Pressable onPress={ () => navigation.navigate('Azkar') } style={ styles.button }>
         <Text style={styles.text}>أذكار و أدعية بدون أنترنت</Text>
       </Pressable>
-      <Slider 
-        style={{width: 200, height: 40}}
-        minimumValue={0}
-        maximumValue={10}
-        minimumTrackTintColor="#770303"
-        maximumTrackTintColor="#000000"
-      />
+
+      <View>
+        <Text>Change Font Size</Text>
+        <View style={{ flexDirection: 'row', alignItems: "center", width: "50%" }}>
+            <Slider 
+              style={{width: "90%", height: 40}}
+              minimumValue={5}
+              maximumValue={30}
+              value={ Math.floor(fontSize) }
+              thumbTintColor="#af13b4"
+              minimumTrackTintColor="#033f77"
+              maximumTrackTintColor="#000000"
+              onValueChange={ (value) => setFontSize(value) }
+          />
+          <Text>{ Math.floor(fontSize) }</Text>
+        </View>
+      </View>
     </View>
   )
 }

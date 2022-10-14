@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Button, Pressable } from 'react-native';
+import { useEffect } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Button, Pressable, RefreshControl } from 'react-native';
 import { useQuery } from 'react-query';
 import Loading from '../../loading/Loading';
 import Error from '../error/Error';
@@ -30,7 +30,6 @@ const Surah = ({ route, navigation }: any) => {
           </TouchableOpacity>
         )
      });
-    
   },[])
 
   if (isFetching) return <Loading size={70} />
@@ -40,7 +39,7 @@ const Surah = ({ route, navigation }: any) => {
 
   return (
     <View style={ styles.container }>
-      <ScrollView style={ styles.surah }>
+      <ScrollView style={ styles.surah } >
         <View style={styles.spacer}></View>
         {
           <Text style={ styles.text } >
@@ -67,17 +66,18 @@ const Surah = ({ route, navigation }: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    padding: 5,
     backgroundColor: '#fff',
     justifyContent: 'center',
   },
   surah: {
     backgroundColor: '#0B2239',
     width: '100%',
-    height: '85%',
+    height: '80%',
     alignContent: 'center',
     paddingBottom: 10,
-    borderRadius: 10
+    borderRadius: 10,
+    paddingHorizontal: 10
   },
   text: {
     fontSize: 16,
