@@ -16,6 +16,7 @@ const Home = observer(({ navigation }: any) => {
   }
 
   useEffect(()=> {
+    setValue(root.fontSize)
     navigation.setOptions({
       title: "Muslim", 
       headerStyle: styles.header, 
@@ -27,7 +28,7 @@ const Home = observer(({ navigation }: any) => {
       },
       headerTintColor: '#0B2239',
     });
-  }, [ ])
+  }, [ root ])
 
   return (
     <View style={ styles.container }>

@@ -16,7 +16,7 @@ const _storeFont = async (value: number) => {
 }
 
 const Store = types.model("rootStore", {
-    fontSize: types.optional(types.number, 0)
+    fontSize: types.optional(types.number, 16)
 }).actions(self => ({
     async setFontSize(value: number){
         self.fontSize = value

@@ -4,8 +4,11 @@ import Loading from '../../loading/Loading';
 
 import axios from 'axios';
 import { useQuery } from 'react-query';
+import { useRootStore } from '../../../model/root';
 
 const Roqya = ({ navigation }: any) => {
+
+  const root = useRootStore();
 
     useEffect(() => {
         navigation.setOptions({ 
@@ -45,7 +48,7 @@ const Roqya = ({ navigation }: any) => {
         data?.map((doa:Doa ) => (
           <View key={ doa.zekr } style={styles.zekrCard}>
             <View style={styles.zekr}>
-              <Text style={styles.text}>{ doa.zekr }</Text>
+              <Text style={[styles.text, { fontSize: root.fontSize } ]}>{ doa.zekr }</Text>
             </View>
             <View style={styles.bottomSection}>
               <Text style={styles.desc}>{ doa.desc }</Text>
@@ -61,7 +64,7 @@ const Roqya = ({ navigation }: any) => {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 15
+        padding: 5
     },
     headerBtn: {
         marginRight: 20,
@@ -80,7 +83,6 @@ const styles = StyleSheet.create({
     text: {
         color: 'white',
         fontFamily: 'Amiri',
-        fontSize: 18,
         textAlign: 'center'
     },
     zekr: {

@@ -4,11 +4,14 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 
 import Loading from '../../loading/Loading';
+import { useRootStore } from '../../../model/root';
 
 const DoaDetails = ({ navigation, route }: any) => {
 
   const { type } = route.params;
 
+  const root = useRootStore();
+  
   const { data, isFetching, error } = useQuery("surahDetails", async () => {
     const response = await axios.get(`https://zakroon.com/main/data/azkar_${ type }.json`);
     return response?.data
@@ -48,7 +51,7 @@ const DoaDetails = ({ navigation, route }: any) => {
         data?.map((doa:Doa ) => (
           <View key={ doa.zekr } style={styles.zekrCard}>
             <View style={styles.zekr}>
-              <Text style={styles.text}>{ doa.zekr }</Text>
+              <Text style={[styles.text, { fontSize: root.fontSize }]}>{ doa.zekr }</Text>
             </View>
             <View style={styles.bottomSection}>
               <Text style={styles.desc}>{ doa?.desc }</Text>
@@ -64,7 +67,7 @@ const DoaDetails = ({ navigation, route }: any) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 15,
+    padding: 5,
   },
   headerBtn: {
     marginRight: 20,
@@ -82,7 +85,6 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white',
-    fontSize: 16,
     textAlign: 'center',
     fontFamily: 'Amiri',
     lineHeight: 40
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 5,
     borderStyle: 'solid',
-    borderWidth: 2,
+    borderWidth: 1,
     fontFamily: 'Amiri',
     borderColor: '#fff',
     borderRadius: 10
