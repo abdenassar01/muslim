@@ -5,6 +5,7 @@ import { useRootStore } from '../../../model/root';
 import { observer } from 'mobx-react-lite';
 import { AZKARSALAT } from '../../../assets/AzkarSalat';
 import RandomZekr from './randomZekr/RandomZekr';
+import { setStatusBarStyle, StatusBar } from 'expo-status-bar';
 
 const Home = observer(({ navigation }: any) => {
   
@@ -34,6 +35,7 @@ const Home = observer(({ navigation }: any) => {
 
   return (
     <ScrollView contentContainerStyle={{ alignItems: "center", justifyContent: "center", minHeight: "100%" }} style={ styles.container }>
+      <StatusBar style="light" />
       <Text style={ styles.heading }>بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</Text>
       <Text style={{ color: "#0B2239" }}>what would you like to see?</Text>
       <View style={ styles.butons }>
