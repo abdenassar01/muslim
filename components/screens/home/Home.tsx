@@ -1,6 +1,6 @@
 import Slider from '@react-native-community/slider';
 import { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, Pressable } from 'react-native'
+import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native'
 import { useRootStore } from '../../../model/root';
 import { observer } from 'mobx-react-lite';
 import { AZKARSALAT } from '../../../assets/AzkarSalat';
@@ -33,7 +33,7 @@ const Home = observer(({ navigation }: any) => {
   }, [ root ])
 
   return (
-    <View style={ styles.container }>
+    <ScrollView contentContainerStyle={{ alignItems: "center", justifyContent: "center", minHeight: "100%" }} style={ styles.container }>
       <Text style={ styles.heading }>بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</Text>
       <Text style={{ color: "#0B2239" }}>what would you like to see?</Text>
       <View style={ styles.butons }>
@@ -65,15 +65,12 @@ const Home = observer(({ navigation }: any) => {
         </View>
         <RandomZekr zekr={ AZKARSALAT[Math.floor(Math.random() * (72 - 0 + 1) + 0)] } />
       </View>
-    </View>
+    </ScrollView>
   )
 })
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#ffffff'
   },
   heading: {
