@@ -52,7 +52,7 @@ const Roqya = ({ navigation }: any) => {
             </View>
             <View style={styles.bottomSection}>
               <Text style={styles.desc}>{ doa.desc }</Text>
-              <Text style={styles.count}>{ doa.count }</Text>
+              <Text style={styles.count}>{ doa.count ? doa.count : 1 }</Text>
             </View>
           </View>
         ))
