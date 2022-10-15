@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native'
+import { useRootStore } from '../../../../model/root'
 
 type Zekr = {
     zekr: {
@@ -8,10 +9,13 @@ type Zekr = {
 }
 
 export default function RandomZekr({ zekr }: Zekr) {
+
+    const root = useRootStore();
+
   return (
     <View style={styles.zekrCard}>
         <Text style={[ styles.text, styles.category ]}>{ zekr.category }</Text>
-        <Text style={styles.text}>
+        <Text style={[styles.text, { fontSize: root.fontSize }]}>
             { zekr.zekr }
         </Text>
     </View>
@@ -28,7 +32,6 @@ const styles = StyleSheet.create({
     },
     text: {
         color: '#fff',
-        fontSize: 16,
         fontFamily: 'Amiri',
         textAlign: 'center'
     },
