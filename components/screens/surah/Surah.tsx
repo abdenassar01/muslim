@@ -58,7 +58,7 @@ const Surah = ({ route, navigation }: any) => {
         }
         <View style={styles.spacer}></View>
       </ScrollView>
-      <View style={styles.bottomBar}>
+      <View style={ styles.bottomBar}>
         <Text style={styles.text}> { data?.name } </Text>
         <Text style={styles.text}> { data?.count } </Text>
         <Text style={styles.text}> { nameAr } </Text>
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   surah: {
     backgroundColor: '#0B2239',
     width: '100%',
-    height: '80%',
+    height: '85%',
     alignContent: 'center',
     paddingBottom: 10,
     borderRadius: 10,

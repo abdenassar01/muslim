@@ -54,8 +54,8 @@ const DoaDetails = ({ navigation, route }: any) => {
               <Text style={[styles.text, { fontSize: root.fontSize }]}>{ doa.zekr }</Text>
             </View>
             <View style={styles.bottomSection}>
-              <Text style={styles.desc}>{ doa?.desc }</Text>
-              <Text style={styles.count}>{ doa.count }</Text>
+              <Text style={styles.desc}>{ doa?.desc ?  doa?.desc : type === 's' ? "ادعية الصباح" : "ادعية المساء" }</Text>
+              <Text style={styles.count}>{ doa.count ? doa.count : 1 }</Text>
             </View>
           </View>
         ))
