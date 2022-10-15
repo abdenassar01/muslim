@@ -51,8 +51,7 @@ const Roqya = ({ navigation }: any) => {
               <Text style={[styles.text, { fontSize: root.fontSize } ]}>{ doa.zekr }</Text>
             </View>
             <View style={styles.bottomSection}>
-              <Text style={styles.desc}>{ doa.desc }</Text>
-              <Text style={styles.count}>{ doa.count ? doa.count : 1 }</Text>
+              <Text style={styles.desc}>{ doa.desc ? doa.desc : doa.count ? `تكرار: ${ doa.count } مرات` : "تكرار: مرة واحدة" }</Text>
             </View>
           </View>
         ))
@@ -90,25 +89,13 @@ const styles = StyleSheet.create({
     },
     bottomSection: {
         flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
         alignItems: 'center'
     },
     desc: {
         color: 'white',
         width: '80%',
         fontFamily: 'Amiri',
-    },
-    count: {
-        color: '#fff', 
-        textAlign: 'center',
-        fontSize: 20,
-        width: 30,
-        height: 30,
-        borderRadius: 50,
-        borderStyle: 'solid',
-        borderWidth: 2,
-        borderColor: '#fff'
+        textAlign: "center"
     },
     spacer: {
         height: 20
