@@ -51,11 +51,11 @@ const DoaDetails = ({ navigation, route }: any) => {
         data?.map((doa:Doa ) => (
           <View key={ doa.zekr } style={styles.zekrCard}>
             <View style={styles.zekr}>
+              <Text style={styles.desc}>{ doa?.desc ?  doa?.desc : type === 's' ? "ادعية الصباح" : "ادعية المساء" }</Text>
               <Text style={[styles.text, { fontSize: root.fontSize }]}>{ doa.zekr }</Text>
             </View>
             <View style={styles.bottomSection}>
-              <Text style={styles.desc}>{ doa?.desc ?  doa?.desc : type === 's' ? "ادعية الصباح" : "ادعية المساء" }</Text>
-              <Text style={styles.count}>{ doa.count ? doa.count : 1 }</Text>
+              <Text style={styles.count}>{ (parseInt(doa.count) > 1) ? `تكرار: ${ doa.count } مرات`  : "تكرار: مرة واحدة" }</Text>
             </View>
           </View>
         ))
@@ -81,44 +81,41 @@ const styles = StyleSheet.create({
     padding: 5,
     backgroundColor: '#0B2239',
     marginVertical: 5,
-    borderRadius: 10
+    borderRadius: 10,
   },
   text: {
     color: 'white',
     textAlign: 'center',
     fontFamily: 'Amiri',
-    lineHeight: 40
+    lineHeight: 40,
+    borderBottomColor: "#fff",
+    borderBottomWidth: 1,
+    borderTopColor: "#fff",
+    borderTopWidth: 1,
+    paddingTop: 10
   },
   zekr: {
     paddingBottom: 20
   },
   bottomSection: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   desc: {
     color: 'white',
-    width: '80%',
     textAlign: 'center',
     padding: 5,
-    borderStyle: 'solid',
-    borderWidth: 1,
+    paddingHorizontal: 20,
+    marginBottom: 10,
+    fontSize: 12,
     fontFamily: 'Amiri',
-    borderColor: '#fff',
-    borderRadius: 10
   },
   count: {
     color: '#fff', 
     textAlign: 'center',
-    fontSize: 20,
-    width: 30,
-    height: 30,
-    borderRadius: 50,
-    borderStyle: 'solid',
-    borderWidth: 2,
-    borderColor: '#fff'
+    fontFamily: 'Amiri',
+    fontSize: 12
   },
   spacer: {
     height: 20
