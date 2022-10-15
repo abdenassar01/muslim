@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { observer } from 'mobx-react-lite';
-import { isRoot } from 'mobx-state-tree';
 import { useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Button, Pressable, RefreshControl } from 'react-native';
 import { useQuery } from 'react-query';

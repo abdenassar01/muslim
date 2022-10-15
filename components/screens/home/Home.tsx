@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { useRootStore } from '../../../model/root';
 import { observer } from 'mobx-react-lite';
+import { AZKARSALAT } from '../../../assets/AzkarSalat';
+import RandomZekr from './randomZekr/RandomZekr';
 
 const Home = observer(({ navigation }: any) => {
   
@@ -48,7 +50,7 @@ const Home = observer(({ navigation }: any) => {
 
       <View style={{ alignItems: "center"  }}>
         <Text style={{ fontWeight: "bold", color: "#0B2239" }}>Change font size</Text>
-        <View style={{ flexDirection: 'row', alignItems: "center", width: "50%" }}>
+        <View style={{ flexDirection: 'row', alignItems: "center", width: "70%" }}>
             <Slider 
               style={{width: "90%", height: 40}}
               minimumValue={12}
@@ -61,6 +63,7 @@ const Home = observer(({ navigation }: any) => {
           />
           <Text>{ root.fontSize }</Text>
         </View>
+        <RandomZekr zekr={ AZKARSALAT[Math.floor(Math.random() * (72 - 0 + 1) + 0)] } />
       </View>
     </View>
   )
