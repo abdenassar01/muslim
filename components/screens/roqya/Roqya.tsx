@@ -5,6 +5,7 @@ import Loading from '../../loading/Loading';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import { useRootStore } from '../../../model/root';
+import { StatusBar } from "expo-status-bar";
 
 const Roqya = ({ navigation }: any) => {
 
@@ -44,6 +45,7 @@ const Roqya = ({ navigation }: any) => {
       
   return (
     <ScrollView style={ styles.container }>
+      <StatusBar style="dark"  />
       {
         data?.map((doa:Doa ) => (
           <View key={ doa.zekr } style={styles.zekrCard}>

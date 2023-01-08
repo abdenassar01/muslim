@@ -1,3 +1,4 @@
+import { StatusBar } from "expo-status-bar";
 import { useEffect } from 'react';
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { AZKARSALAT } from '../../../assets/AzkarSalat';
@@ -27,6 +28,7 @@ const Azkar = ({ navigation }: any) => {
 
   return (
     <ScrollView style={ styles.container }>
+      <StatusBar style="dark"  />
       { 
         AZKARSALAT.map(item => (
           <View key={ Math.random() * Math.random() } style={styles.zekrCard}>

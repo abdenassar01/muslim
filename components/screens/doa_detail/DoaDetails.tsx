@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import Loading from '../../loading/Loading';
 import { useRootStore } from '../../../model/root';
+import { StatusBar } from "expo-status-bar";
 
 const DoaDetails = ({ navigation, route }: any) => {
 
@@ -47,6 +48,7 @@ const DoaDetails = ({ navigation, route }: any) => {
 
   return (
     <ScrollView style={ styles.container }>
+      <StatusBar style="dark"  />
       {
         data?.map((doa:Doa ) => (
           <View key={ doa.zekr } style={styles.zekrCard}>
@@ -70,6 +72,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   headerBtn: {
+    marginTop: 15,
     marginRight: 20,
   },
   icon: {

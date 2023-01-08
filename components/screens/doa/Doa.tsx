@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, Pressable, Image } from 'react-native'
 import { useEffect } from 'react';
+import { StatusBar } from "expo-status-bar";
 
 const Doa = ({ navigation }: any) => {
 
@@ -23,6 +24,7 @@ const Doa = ({ navigation }: any) => {
 
   return (
     <View style={ styles.container }>
+        <StatusBar style="dark"  />
         <Text style={ styles.heading }>بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</Text>
         <View style={ styles.buttonWrapper }>
             <Pressable onPress={ () => navigation.navigate('DuaDetal', { type: 's' }) } style={ styles.button }>
@@ -68,6 +70,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
     },
     headerBtn: {
+        marginTop: 15,
         marginRight: 20,
     },
     icon: {
