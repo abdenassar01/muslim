@@ -39,11 +39,12 @@ const Azkar = ({ navigation }: any) => {
 
   return (
     <SafeAreaView style={styles.container}>
-    <FlatList
-      data={AZKARSALAT}
-      renderItem={renderItem}
-      keyExtractor={item => (Math.random() * item.id).toString()}
-    />
+      <StatusBar style="dark" />
+      <FlatList
+        data={AZKARSALAT}
+        renderItem={renderItem}
+        keyExtractor={item => (Math.random() * item.id).toString()}
+      />
   </SafeAreaView>
   )
 }
@@ -56,6 +57,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   headerBtn: {
+    marginTop: 15,
     marginRight: 20,
   },
   icon: {

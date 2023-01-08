@@ -1,5 +1,5 @@
 import Slider from '@react-native-community/slider';
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native'
 import { useRootStore } from '../../../model/root';
 import { observer } from 'mobx-react-lite';
