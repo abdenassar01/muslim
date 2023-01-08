@@ -28,7 +28,7 @@ const Roqya = ({ navigation }: any) => {
       },[])
 
       const { data, isFetching, error } = useQuery("surahDetails", async () => {
-        const response = await axios.get(`https://zakroon.com/main/data/roqya_s.json`);
+        const response = await axios.get(`https://raw.githubusercontent.com/abdenassar01/muslim/main/data/roqya.json`);
         return response?.data
       })
     

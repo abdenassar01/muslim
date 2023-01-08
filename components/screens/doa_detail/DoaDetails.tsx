@@ -13,7 +13,7 @@ const DoaDetails = ({ navigation, route }: any) => {
   const root = useRootStore();
   
   const { data, isFetching, error } = useQuery("surahDetails", async () => {
-    const response = await axios.get(`https://zakroon.com/main/data/azkar_${ type }.json`);
+    const response = await axios.get(`https://raw.githubusercontent.com/abdenassar01/muslim/main/data/azkar_${ type }.json`);
     return response?.data
   })
 
