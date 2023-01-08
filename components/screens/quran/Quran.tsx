@@ -88,6 +88,7 @@ const renderItem = ({ item }: any) => {
  
   return (
     <View style={styles.container}>
+        <StatusBar style="dark" />
         <FlatList
           data={ list }
           renderItem={ renderItem }
@@ -119,9 +120,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 2,
     paddingHorizontal: 20,
     backgroundColor: '#0B2239',
-    borderRadius: 50
+    borderRadius: 10
   },
   headerBtn: {
+    marginTop: 15,
     marginRight: 20,
   },
   icon: {
