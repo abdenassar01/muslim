@@ -11,15 +11,11 @@ const Home = observer(({ navigation }: any) => {
   
   const root = useRootStore();
 
-  const [ value, setValue ] = useState<number>()
-
   const onChange = (value: number) => {
-    setValue(value)
     root.setFontSize(Math.floor(value))
   }
 
   useEffect(()=> {
-    setValue(root.fontSize)
     navigation.setOptions({
       title: "Muslim", 
       headerStyle: styles.header, 
@@ -57,7 +53,7 @@ const Home = observer(({ navigation }: any) => {
               style={{width: "90%", height: 40}}
               minimumValue={12}
               maximumValue={30}
-              value={ value }
+              value={ root.fontSize }
               thumbTintColor="#0B2239"
               minimumTrackTintColor="#0B2239"
               maximumTrackTintColor="#000000"
