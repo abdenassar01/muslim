@@ -5,7 +5,7 @@ import { useRootStore } from '../../../model/root';
 import { observer } from 'mobx-react-lite';
 import { AZKARSALAT } from '../../../assets/AzkarSalat';
 import RandomZekr from './randomZekr/RandomZekr';
-import { setStatusBarStyle, StatusBar } from 'expo-status-bar';
+import {  StatusBar } from 'expo-status-bar';
 
 const Home = observer(({ navigation }: any) => {
   

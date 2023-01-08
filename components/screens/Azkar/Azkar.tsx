@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from 'react';
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { AZKARSALAT } from '../../../assets/AzkarSalat';
 import { useRootStore } from '../../../model/root';
 
@@ -26,12 +26,8 @@ const Azkar = ({ navigation }: any) => {
      });
   },[])
 
-  return (
-    <ScrollView style={ styles.container }>
-      <StatusBar style="dark"  />
-      { 
-        AZKARSALAT.map(item => (
-          <View key={ Math.random() * Math.random() } style={styles.zekrCard}>
+  const renderItem = ({ item }: any) => (
+          <View style={styles.zekrCard}>
               <View>
                 <Text style={styles.desc}>{ item.category }</Text>
               </View>
@@ -39,10 +35,16 @@ const Azkar = ({ navigation }: any) => {
                 <Text style={[styles.text, { fontSize: root.fontSize }]}>{ item.zekr }</Text>
               </View>
           </View>
-        ))
-      }
-      <View style={styles.spacer}></View>
-    </ScrollView>
+        )
+
+  return (
+    <SafeAreaView style={styles.container}>
+    <FlatList
+      data={AZKARSALAT}
+      renderItem={renderItem}
+      keyExtractor={item => (Math.random() * item.id).toString()}
+    />
+  </SafeAreaView>
   )
 }
 
@@ -82,8 +84,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 5,
     borderColor: '#fff',
-  },
-  spacer: {
-    height: 20
   }
 })
