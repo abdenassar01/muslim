@@ -4,7 +4,6 @@ import { useQuery } from 'react-query';
 import React from 'react';
 import axios from 'axios';
 import Loading from '../../loading/Loading';
-import Error from '../error/Error';
  
 
 const Quran = ({ navigation }: any) => {
@@ -92,6 +91,7 @@ const renderItem = ({ item }: any) => {
         <FlatList
           data={ list }
           renderItem={ renderItem }
+          numColumns={ 3 }
           keyExtractor={ (item) => item.id.toString() }
         />
         <StatusBar style="auto" />
@@ -106,6 +106,8 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 5,
+    width: "33.3%",
+    height: 100
   },
   text: {
     textAlign: 'center',
@@ -116,11 +118,10 @@ const styles = StyleSheet.create({
   titleView: {
     flex: 1,
     justifyContent: 'space-between',
-    flexDirection: 'row',
-    marginHorizontal: 2,
+    // marginHorizontal: 2,
     paddingHorizontal: 20,
     backgroundColor: '#0B2239',
-    borderRadius: 10
+    borderRadius: 5
   },
   headerBtn: {
     marginTop: 15,
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     resizeMode: 'stretch'
-  },
+  }
 });
 
 export default Quran
