@@ -1,11 +1,11 @@
 import Slider from '@react-native-community/slider';
-import { useEffect } from 'react'
 import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native'
 import { useRootStore } from '../../../model/root';
 import { observer } from 'mobx-react-lite';
 import { AZKARSALAT } from '../../../assets/AzkarSalat';
 import RandomZekr from './randomZekr/RandomZekr';
 import {  StatusBar } from 'expo-status-bar';
+import Header from "./header/Header";
 
 const Home = observer(({ navigation }: any) => {
   
@@ -15,23 +15,10 @@ const Home = observer(({ navigation }: any) => {
     root.setFontSize(Math.floor(value))
   }
 
-  useEffect(()=> {
-    navigation.setOptions({
-      title: "Muslim", 
-      headerStyle: styles.header, 
-      headerTitleStyle:{
-        color: '#fff',
-        fontFamily: 'Amiri',
-        fontSize: 24,
-        fontWeight: '200',
-      },
-      headerTintColor: '#0B2239',
-    });
-  }, [ root ])
-
   return (
     <ScrollView contentContainerStyle={{ alignItems: "center", justifyContent: "center", minHeight: "100%" }} style={ styles.container }>
-      <StatusBar style="light" />
+      {/* <StatusBar style="light"  /> */}
+      <Header />
       <Text style={ styles.heading }>بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</Text>
       <Text style={{ color: "#0B2239" }}>what would you like to see?</Text>
       <View style={ styles.butons }>
@@ -81,7 +68,7 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     minWidth: 150,
     backgroundColor: '#0B2239',
-    borderRadius: 50,
+    borderRadius: 5,
     paddingHorizontal: 20,
     marginHorizontal: 5,
   },

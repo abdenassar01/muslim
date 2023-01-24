@@ -49,7 +49,7 @@ export default function App() {
    <NavigationContainer>
     <QueryClientProvider client={ client }>
       <Stack.Navigator>
-        <Stack.Screen name='Home' component={ Home } />
+        <Stack.Screen name='Home' component={ Home } options={{ headerShown: false }} />
         <Stack.Screen name='Quran' component={ Quran } />
         <Stack.Screen name='Dua' component={ Doa } />
         <Stack.Screen name='DuaDetal' component={ DoaDetails } />
