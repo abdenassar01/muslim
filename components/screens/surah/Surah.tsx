@@ -56,9 +56,11 @@ const Surah = ({ route, navigation }: any) => {
         }
         <View style={styles.spacer}></View>
       </ScrollView>
-      <View style={ styles.bottomBar}>
+      <View style={ styles.bottomBar }>
         <Text style={styles.text}> { data?.name } </Text>
-        <Text style={styles.text}> { data?.count } </Text>
+        <View style={ styles.count }>
+          <Text> { data?.count } </Text>
+        </View>
         <Text style={styles.text}> { nameAr } </Text>
       </View>
     </View>
@@ -78,8 +80,8 @@ const styles = StyleSheet.create({
     height: '85%',
     alignContent: 'center',
     paddingBottom: 10,
-    borderRadius: 10,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    borderRadius: 5,
   },
   text: {
     fontWeight: '600',
@@ -87,18 +89,17 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontFamily: 'Amiri'
   },
-  ayahText: {
-    fontFamily: 'Amiri',
-    lineHeight: 50
+  count: {
+    color: '#0B2239',
+    backgroundColor: '#ffffff',
+    width: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 30,
+    borderRadius: 15
   },
-  ayah: {
-    fontWeight: 'bold',
-    color: '#ffffff',
-    borderRadius: 50,
-    padding: 2,
-    textAlign: 'center',
-    marginHorizontal: 130,
-    marginVertical: 5
+  ayahText: {
+    lineHeight: 50
   },
   bottomBar: {
     flex: 1,
@@ -108,9 +109,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     color: '#0B2239',
     marginTop: 5,
-    paddingBottom: 10,
+    paddingBottom: 5,
     fontSize: 16,
-    borderRadius: 50
+    borderRadius: 5
   },
   headerBtn: {
     marginRight: 20,
@@ -122,17 +123,6 @@ const styles = StyleSheet.create({
   },
   spacer: {
     height: 30
-  },
-  play: {
-    fontSize: 25,
-    color: 'white',
-    borderColor: 'white',
-    borderStyle: 'solid',
-    borderWidth: 2,
-    borderRadius: 50,
-    paddingHorizontal: 7,
-    paddingVertical: 3,
-    textAlign: 'center',
   }
 });
 
