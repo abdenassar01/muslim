@@ -7,6 +7,14 @@
         "android": {
           "buildType": "apk"
         }
+      },
+      "production": {
+        "env": {
+            "ANDROID_SDK_ROOT": "/home/abdenassar/Android/Sdk"
+        },
+        "android": {
+          "gradleCommand": ":app:assembleRelease"
+        }
       }
     }
   }
