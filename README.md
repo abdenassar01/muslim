@@ -51,6 +51,19 @@
     ```
     yarn global add expo-cli
     ```
+    
+    
+ # Screenshots 
+ 
+ ![muslim app home](https://i.imgur.com/bxfOZtS.png)
+ ![muslim app quran screen](https://i.imgur.com/qeGbMfc.png)
+ ![muslim surah details](https://i.imgur.com/NKLjRHv.png)
+ ![muslim doa masae](https://i.imgur.com/mjSDP9D.png)
+ ![muslim doa sabah](https://i.imgur.com/JOKslvI.png)
+ ![muslim doa & azkar offline](https://i.imgur.com/QVCj5VN.png) 
+ 
+ ![muslim roqya screen](https://i.imgur.com/2irhdGy.png)
+ 
 </div>
 
 author: [@abdenassar01](https://github.com/abdenassar01)
