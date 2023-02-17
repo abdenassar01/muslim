@@ -17,7 +17,7 @@ const Home = observer(({ navigation }: any) => {
 
   return (
     <ScrollView contentContainerStyle={{ alignItems: "center", justifyContent: "center", minHeight: "100%" }} style={ styles.container }>
-      {/* <StatusBar style="light"  /> */}
+      {/* <StatusBar style="dark" /> */}
       <Header />
       <Text style={ styles.heading }>بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</Text>
       <Text style={{ color: "#0B2239" }}>what would you like to see?</Text>
