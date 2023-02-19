@@ -118,8 +118,6 @@ const styles = StyleSheet.create({
   titleView: {
     flex: 1,
     justifyContent: 'space-between',
-    // marginHorizontal: 2,
-    paddingHorizontal: 20,
     backgroundColor: '#0B2239',
     borderRadius: 5
   },
