@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Button, Pressable, RefreshControl } from 'react-native';
 import { useQuery } from 'react-query';
 import { useRootStore } from '../../../model/root';
@@ -47,9 +47,9 @@ const Surah = ({ route, navigation }: any) => {
           <Text style={[ styles.text , { fontSize: root.fontSize } ]} >
             {
               ayahs.map((item:string) => (
-                <Text key={ Math.random() } style={ styles.ayahText } >
+                <Fragment key={ Math.random() } >
                   { item } &nbsp;{ "\u06DD" }&nbsp;
-                </Text>
+                </Fragment>
               ))
             }
           </Text>
@@ -85,9 +85,10 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: '600',
-    textAlign: 'center',
+    textAlign: 'justify',
     color: '#ffffff',
-    fontFamily: 'Amiri'
+    fontFamily: 'Amiri',
+    lineHeight: 50,    
   },
   count: {
     color: '#0B2239',
@@ -97,9 +98,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 30,
     borderRadius: 15
-  },
-  ayahText: {
-    lineHeight: 50
   },
   bottomBar: {
     flex: 1,
