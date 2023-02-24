@@ -51,7 +51,9 @@
     ```
     yarn global add expo-cli
     ```
-    
+ # Contributions
+ 
+ any kind of contribution is welcomed and appreciated 🤗
     
  # Screenshots 
  
