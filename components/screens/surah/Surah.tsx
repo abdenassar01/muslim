@@ -48,7 +48,7 @@ const Surah = ({ route, navigation }: any) => {
             {
               ayahs.map((item:string) => (
                 <Fragment key={ Math.random() } >
-                  { item } &nbsp;{ "\u06DD" }&nbsp;
+                  { `${item}\u06DD` } 
                 </Fragment>
               ))
             }
