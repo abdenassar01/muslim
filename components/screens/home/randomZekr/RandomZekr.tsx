@@ -25,7 +25,7 @@ export default function RandomZekr({ zekr }: Zekr) {
 const styles = StyleSheet.create({
     zekrCard: {
         padding: 10,
-        width: 350,
+        width: '95%',
         backgroundColor: '#0B2239',
         marginVertical: 2,
         borderRadius: 5

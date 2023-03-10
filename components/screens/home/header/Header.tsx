@@ -11,8 +11,7 @@ const Header = () => {
 
 const styles = StyleSheet.create({
     wrapper: {
-        position: 'absolute',
-        top: 5,
+        marginTop: 30,
         backgroundColor: '#0B2239',
         height: 40,
         borderRadius: 5,

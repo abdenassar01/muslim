@@ -16,46 +16,51 @@ const Home = observer(({ navigation }: any) => {
   }
 
   return (
-    <ScrollView contentContainerStyle={{ alignItems: "center", justifyContent: "center", minHeight: "100%" }} style={ styles.container }>
+    <View style={ styles.container }>
       <StatusBar style="dark" />
       <Header />
-      <Text style={ styles.heading }>بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</Text>
-      <Text style={{ color: "#0B2239" }}>what would you like to see?</Text>
-      <View style={ styles.butons }>
-        <Pressable onPress={ () => navigation.navigate('Quran') } style={ styles.button }>
-          <Text style={styles.text}>القرآن الکریم</Text>
-        </Pressable>
-        <Pressable onPress={ () => navigation.navigate('Dua') } style={ styles.button }>
-          <Text style={styles.text}>دعاء</Text>
-        </Pressable>   
-      </View>
-      <Pressable onPress={ () => navigation.navigate('Azkar') } style={ styles.button }>
-        <Text style={styles.text}>أذكار و أدعية بدون أنترنت</Text>
-      </Pressable>
-
-      <View style={{ alignItems: "center"  }}>
-        <Text style={{ fontWeight: "bold", color: "#0B2239" }}>Change font size</Text>
-        <View style={{ flexDirection: 'row', alignItems: "center", width: "70%" }}>
-            <Slider 
-              style={{width: "90%", height: 40}}
-              minimumValue={12}
-              maximumValue={30}
-              value={ root.fontSize }
-              thumbTintColor="#0B2239"
-              minimumTrackTintColor="#0B2239"
-              maximumTrackTintColor="#000000"
-              onValueChange={ onChange }
-          />
-          <Text>{ root.fontSize }</Text>
+      <ScrollView contentContainerStyle={{ alignItems: "center", justifyContent: "center", minHeight: "90%" }}>     
+        <Text style={ styles.heading }>بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</Text>
+        <Text style={{ color: "#0B2239" }}>what would you like to see?</Text>
+        <View style={ styles.butons }>
+          <Pressable onPress={ () => navigation.navigate('Quran') } style={ styles.button }>
+            <Text style={styles.text}>القرآن الکریم</Text>
+          </Pressable>
+          <Pressable onPress={ () => navigation.navigate('Dua') } style={ styles.button }>
+            <Text style={styles.text}>دعاء</Text>
+          </Pressable>   
         </View>
-        <RandomZekr zekr={ AZKARSALAT[Math.floor(Math.random() * (72 - 0 + 1) + 0)] } />
-      </View>
-    </ScrollView>
+        <Pressable onPress={ () => navigation.navigate('Azkar') } style={ styles.button }>
+          <Text style={styles.text}>أذكار و أدعية بدون أنترنت</Text>
+        </Pressable>
+
+        <View style={{ alignItems: "center"  }}>
+          <Text style={{ fontWeight: "bold", color: "#0B2239" }}>Change font size</Text>
+          <View style={{ flexDirection: 'row', alignItems: "center", width: "70%" }}>
+              <Slider 
+                style={{width: "90%", height: 40}}
+                minimumValue={12}
+                maximumValue={30}
+                value={ root.fontSize }
+                thumbTintColor="#0B2239"
+                minimumTrackTintColor="#0B2239"
+                maximumTrackTintColor="#000000"
+                onValueChange={ onChange }
+            />
+            <Text>{ root.fontSize }</Text>
+          </View>
+          <RandomZekr zekr={ AZKARSALAT[Math.floor(Math.random() * (72 - 0 + 1) + 0)] } />
+        </View>
+      </ScrollView>
+    </View>
+    
   )
 })
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1, 
+    alignItems: "center",
     backgroundColor: '#ffffff'
   },
   heading: {
