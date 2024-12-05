@@ -38,8 +38,9 @@
         "projectId": "03ed23a1-7f76-437c-870f-fcc5a81504be"
       }
     },
-    "runtimeVersion": {
-      "policy": "sdkVersion"
-    }
+    "runtimeVersion": "1.0.0",
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
