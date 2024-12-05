@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "muslim",
-    "slug": "muslim",
+    "name": "Ansam Al Quran",
+    "slug": "ansam_al_quran",
     "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,7 +19,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.compiledideas.ansamAlQuran"
     },
     "android": {
       "adaptiveIcon": {
@@ -27,7 +28,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "versionCode": 2,
-      "package": "com.muslim"
+      "package": "com.compiledideas.ansamAlQuran"
     },
     "web": {
       "favicon": "./assets/icon.png"
